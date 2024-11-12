@@ -9,17 +9,12 @@ namespace Practicas.Clases.Database
 {
     internal class Conexion
     {
-        private string cadena = "Provider=Microsoft.ACE.OLEDB.12.0; Data source=|DataDirectory|Database11.ACCDB";
-        private OleDbConnection conexion;
-        public OleDbConnection Abrir()
-        {
-            conexion = new OleDbConnection(cadena);
-            return conexion;
-        }
+        private static string cadena = "Provider=Microsoft.ACE.OLEDB.12.0; Data source=|DataDirectory|db.accdb";
+        private static OleDbConnection conexion = new OleDbConnection(cadena);
+        public static void AbrirConexion() { conexion.Open(); }
 
-        public void Cerrar()
-        {
-            conexion.Close();
-        }
+        public static void CerrarConexion() { conexion.Close(); }
+
+        public static OleDbConnection GetConexion() { return conexion; }
     }
 }

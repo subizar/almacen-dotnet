@@ -8,7 +8,7 @@ namespace Practicas.Clases
 {
     public class Modelos
     {
-        class Usuario
+        public class Usuario
         {
             private string id { get; set; }
             private string name { get; set; }

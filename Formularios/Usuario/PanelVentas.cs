@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Practicas
+namespace Practicas.Formularios.Usuario
 {
-    public partial class Menu : Form
+    public partial class PanelVentas : Form
     {
-        public Menu()
+        public PanelVentas()
         {
             InitializeComponent();
         }

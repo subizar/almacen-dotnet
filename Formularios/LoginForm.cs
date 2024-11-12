@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Practicas.Clases.Lógica;
 
 namespace Practicas.Formularios
 {
@@ -16,5 +10,23 @@ namespace Practicas.Formularios
         {
             InitializeComponent();
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            if (Auth.VerificarCredenciales(txtEmail.Text, txtPassword.Text))
+            {
+                Form next = new Usuario.PanelVentas();
+                next.Show();
+                this.Hide();
+            }
+        }
+
+        private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form next = new LostPasswordForm();
+            next.Show();
+            this.Dispose();
+        }
+
     }
 }

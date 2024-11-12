@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Clases\Database\Conexion.cs" />
     <Compile Include="Clases\Database\Usuarios.cs" />
-    <Compile Include="Clases\Login.cs" />
     <Compile Include="Clases\Lógica\AdministracionUsuarios.cs" />
     <Compile Include="Clases\Lógica\Auth.cs" />
     <Compile Include="Clases\Modelos.cs" />
@@ -58,28 +57,29 @@
     <Compile Include="Formularios\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Formularios\LostPasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="Formularios\LostPasswordForm.Designer.cs">
+      <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Menu.cs">
+    <Compile Include="Formularios\Usuario\PanelVentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <Compile Include="Formularios\Usuario\PanelVentas.Designer.cs">
+      <DependentUpon>PanelVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\LostPasswordForm.resx">
+      <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Menu.resx">
-      <DependentUpon>Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Usuario\PanelVentas.resx">
+      <DependentUpon>PanelVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -103,6 +103,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Formularios\Admin\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

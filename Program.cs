@@ -16,7 +16,11 @@ namespace Practicas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new loginForm());
+            Form login = new Formularios.LoginForm();
+            login.Show();
+            Application.Run();
         }
+
+        
     }
 }
