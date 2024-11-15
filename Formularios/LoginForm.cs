@@ -15,17 +15,18 @@ namespace Practicas.Formularios
         {
             if (Auth.VerificarCredenciales(txtEmail.Text, txtPassword.Text))
             {
-                Form next = new Usuario.PanelVentas();
-                next.Show();
-                this.Hide();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
         }
 
         private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form next = new LostPasswordForm();
-            next.Show();
-            this.Dispose();
+            this.Visible = false;
+            next.ShowDialog();
+            this.Visible = true;
+            
         }
 
     }

@@ -17,8 +17,11 @@ namespace Practicas
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Form login = new Formularios.LoginForm();
-            login.Show();
-            Application.Run();
+            login.ShowDialog();
+            if (login.DialogResult == DialogResult.OK)
+            {
+                Application.Run(new Formularios.Usuario.PanelVentas());
+            }
         }
 
         

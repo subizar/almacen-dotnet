@@ -19,9 +19,7 @@ namespace Practicas.Formularios
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form next = new LoginForm();
-            next.Show();
-            this.Dispose();
+            this.Close();
         }
     }
 }
