@@ -69,7 +69,6 @@
     <Compile Include="Formularios\Usuario\PanelVentas.Designer.cs">
       <DependentUpon>PanelVentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\LoginForm.resx">
