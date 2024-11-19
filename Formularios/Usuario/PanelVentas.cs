@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Practicas.Clases.Lógica;
 
 namespace Practicas.Formularios.Usuario
 {
@@ -15,6 +16,11 @@ namespace Practicas.Formularios.Usuario
         public PanelVentas()
         {
             InitializeComponent();
+        }
+
+        private void PanelVentas_Load(object sender, EventArgs e)
+        {
+            label1.Text = Auth.LeerRol(1);
         }
     }
 }

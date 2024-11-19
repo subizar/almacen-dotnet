@@ -6,16 +6,22 @@ namespace Practicas.Formularios
 {
     public partial class LoginForm : Form
     {
+        public string role;
         public LoginForm()
         {
             InitializeComponent();
+
         }
+
+        
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (Auth.VerificarCredenciales(txtEmail.Text, txtPassword.Text))
+            (bool, int?) credenciales = Auth.VerificarCredenciales(txtEmail.Text, txtPassword.Text);
+            if (credenciales.Item1)
             {
                 this.DialogResult = DialogResult.OK;
+                this.role = credenciales.Item2.ToString();
                 this.Close();
             }
         }

@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using Practicas.Clases;
 
 namespace Practicas.Clases.Database
 {
     internal class Usuarios : Conexion
     {
-        public static bool RevisarLogin(string consulta)
+        public static (bool, int?) RevisarLogin(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
             AbrirConexion();
@@ -20,13 +21,22 @@ namespace Practicas.Clases.Database
             CerrarConexion();
             if ( response > 0)
             {
-                return true;
+                return (true, response);
             }
             else
             {
-                return false;
+                return (false, null);
             }
 
+        }
+
+        public static string LeerValor(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            string response = comando.ExecuteScalar().ToString();
+            CerrarConexion();
+            return response;
         }
     }
 }

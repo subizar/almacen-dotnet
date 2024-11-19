@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PanelVentas";
             this.Text = "PanelVentas";
+            this.Load += new System.EventHandler(this.PanelVentas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
