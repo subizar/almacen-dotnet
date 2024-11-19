@@ -14,7 +14,7 @@ namespace Practicas.Clases.Lógica
         public static bool VerificarCredenciales(string usuario, string contraseña)
         {
             // vulnerable a inyección sql
-            string consulta = $"SELECT Count(*) FROM Usuarios WHERE N_usr = \"{usuario}\" AND contraseña = \"{contraseña}\"";
+            string consulta = $"SELECT Count(*) FROM Usuarios WHERE nombre = \"{usuario}\" AND contraseña = \"{contraseña}\"";
             return Database.Usuarios.RevisarLogin(consulta);
         }
     }
