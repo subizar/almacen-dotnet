@@ -69,6 +69,18 @@
     <Compile Include="Formularios\Usuario\PanelVentas.Designer.cs">
       <DependentUpon>PanelVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Usuario\VistaCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Usuario\VistaCajero.Designer.cs">
+      <DependentUpon>VistaCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Usuario\VistaNoticias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Usuario\VistaNoticias.Designer.cs">
+      <DependentUpon>VistaNoticias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\LoginForm.resx">
@@ -79,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuario\PanelVentas.resx">
       <DependentUpon>PanelVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Usuario\VistaCajero.resx">
+      <DependentUpon>VistaCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Usuario\VistaNoticias.resx">
+      <DependentUpon>VistaNoticias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

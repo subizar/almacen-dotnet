@@ -38,5 +38,13 @@ namespace Practicas.Clases.Database
             CerrarConexion();
             return response;
         }
+
+        public static void CrearUsuario(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
     }
 }

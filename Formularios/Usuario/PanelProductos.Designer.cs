@@ -1,6 +1,6 @@
 ﻿namespace Practicas.Formularios.Usuario
 {
-    partial class PanelVentas
+    partial class PanelProductos
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnEliminar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnFiltrar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnEliminar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,59 +41,57 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(122, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(507, 258);
+            this.dataGridView1.Size = new System.Drawing.Size(533, 248);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.Location = new System.Drawing.Point(12, 118);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(104, 29);
-            this.btnEliminar.TabIndex = 1;
-            this.btnEliminar.Text = "Eliminar venta";
-            this.btnEliminar.UseVisualStyleBackColor = true;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Location = new System.Drawing.Point(12, 83);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(104, 29);
-            this.btnEditar.TabIndex = 2;
-            this.btnEditar.Text = "Editar venta";
-            this.btnEditar.UseVisualStyleBackColor = true;
-            // 
-            // btnFiltrar
-            // 
-            this.btnFiltrar.Location = new System.Drawing.Point(12, 48);
-            this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(104, 29);
-            this.btnFiltrar.TabIndex = 3;
-            this.btnFiltrar.Text = "Filtrar";
-            this.btnFiltrar.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(12, 13);
+            this.btnAgregar.Location = new System.Drawing.Point(12, 12);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(104, 29);
-            this.btnAgregar.TabIndex = 4;
-            this.btnAgregar.Text = "Agregar venta";
+            this.btnAgregar.TabIndex = 8;
+            this.btnAgregar.Text = "Agregar Producto";
             this.btnAgregar.UseVisualStyleBackColor = true;
             // 
-            // PanelVentas
+            // btnFiltrar
+            // 
+            this.btnFiltrar.Location = new System.Drawing.Point(12, 47);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(104, 29);
+            this.btnFiltrar.TabIndex = 7;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Location = new System.Drawing.Point(12, 82);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(104, 29);
+            this.btnEditar.TabIndex = 6;
+            this.btnEditar.Text = "Editar Producto";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(12, 117);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(104, 29);
+            this.btnEliminar.TabIndex = 5;
+            this.btnEliminar.Text = "Eliminar producto";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            // 
+            // PanelProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 282);
+            this.ClientSize = new System.Drawing.Size(667, 272);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "PanelVentas";
-            this.Text = "PanelVentas";
-            this.Load += new System.EventHandler(this.PanelVentas_Load);
+            this.Name = "PanelProductos";
+            this.Text = "PanelProductos";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -102,9 +100,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnEliminar;
-        private System.Windows.Forms.Button btnEditar;
-        private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnEliminar;
     }
 }

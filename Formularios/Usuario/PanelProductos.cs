@@ -7,25 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Practicas.Clases.Lógica;
 
 namespace Practicas.Formularios.Usuario
 {
-    public partial class PanelVentas : Form
+    public partial class PanelProductos : Form
     {
-        public PanelVentas()
+        public PanelProductos()
         {
             InitializeComponent();
-        }
-
-        private void PanelVentas_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

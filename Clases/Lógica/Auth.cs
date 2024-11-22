@@ -11,7 +11,8 @@ namespace Practicas.Clases.Lógica
     internal class Auth
     {
         // Por ahora, lo único que hace esta clase es intermediar entre la base de datos y los formularios
-        // No realiza ningun tipo de autenticación real 
+        // No realiza ningun tipo de autenticación real (En el sentido de que esto no se vuelve a verificar
+        // para ninguna acción, y un usuario puede simplemente modificar la memoria y acceder al programa sin restricciones)
         public static (bool, int?) VerificarCredenciales(string usuario, string contraseña)
         {
             // vulnerable a inyección sql
