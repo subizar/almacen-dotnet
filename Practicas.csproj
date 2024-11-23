@@ -63,6 +63,12 @@
     <Compile Include="Formularios\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Usuario\PanelProductos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Usuario\PanelProductos.Designer.cs">
+      <DependentUpon>PanelProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Usuario\PanelVentas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\LostPasswordForm.resx">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Usuario\PanelProductos.resx">
+      <DependentUpon>PanelProductos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuario\PanelVentas.resx">
       <DependentUpon>PanelVentas.cs</DependentUpon>

@@ -30,14 +30,6 @@ namespace Practicas.Clases.Database
 
         }
 
-        public static string LeerValor(string consulta)
-        {
-            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
-            AbrirConexion();
-            string response = comando.ExecuteScalar().ToString();
-            CerrarConexion();
-            return response;
-        }
 
         public static void CrearUsuario(string consulta)
         {

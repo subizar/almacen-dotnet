@@ -24,7 +24,7 @@ namespace Practicas.Clases.Lógica
         public static string LeerRol(int id)
         {
             string consulta = $"SELECT rol FROM Usuarios WHERE usr_id = {id}";
-            return Database.Usuarios.LeerValor(consulta);
+            return Database.Misc.LeerValor(consulta);
         }
     }
 }
