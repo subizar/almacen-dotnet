@@ -38,15 +38,16 @@
             this.btnConfirmarCarrito = new System.Windows.Forms.Button();
             this.btnEliminarElemento = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nmrCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // lboxCarrito
             // 
             this.lboxCarrito.FormattingEnabled = true;
-            this.lboxCarrito.Location = new System.Drawing.Point(344, 132);
+            this.lboxCarrito.Location = new System.Drawing.Point(344, 5);
             this.lboxCarrito.Name = "lboxCarrito";
-            this.lboxCarrito.Size = new System.Drawing.Size(335, 121);
+            this.lboxCarrito.Size = new System.Drawing.Size(335, 212);
             this.lboxCarrito.TabIndex = 17;
             // 
             // lboxProductos
@@ -67,25 +68,25 @@
             // 
             // btnAñadirProducto
             // 
-            this.btnAñadirProducto.Location = new System.Drawing.Point(211, 200);
+            this.btnAñadirProducto.Location = new System.Drawing.Point(211, 225);
             this.btnAñadirProducto.Name = "btnAñadirProducto";
-            this.btnAñadirProducto.Size = new System.Drawing.Size(61, 53);
+            this.btnAñadirProducto.Size = new System.Drawing.Size(127, 53);
             this.btnAñadirProducto.TabIndex = 20;
             this.btnAñadirProducto.Text = "Añadir";
             this.btnAñadirProducto.UseVisualStyleBackColor = true;
             // 
             // nmrCantidad
             // 
-            this.nmrCantidad.Location = new System.Drawing.Point(220, 72);
+            this.nmrCantidad.Location = new System.Drawing.Point(211, 199);
             this.nmrCantidad.Name = "nmrCantidad";
-            this.nmrCantidad.Size = new System.Drawing.Size(61, 20);
+            this.nmrCantidad.Size = new System.Drawing.Size(127, 20);
             this.nmrCantidad.TabIndex = 21;
             // 
             // txtTotales
             // 
-            this.txtTotales.Location = new System.Drawing.Point(344, 259);
+            this.txtTotales.Location = new System.Drawing.Point(344, 225);
             this.txtTotales.Name = "txtTotales";
-            this.txtTotales.Size = new System.Drawing.Size(205, 50);
+            this.txtTotales.Size = new System.Drawing.Size(205, 84);
             this.txtTotales.TabIndex = 22;
             this.txtTotales.Text = "Carrito vacío";
             // 
@@ -109,7 +110,7 @@
             // 
             // btnEliminarElemento
             // 
-            this.btnEliminarElemento.Location = new System.Drawing.Point(555, 98);
+            this.btnEliminarElemento.Location = new System.Drawing.Point(555, 225);
             this.btnEliminarElemento.Name = "btnEliminarElemento";
             this.btnEliminarElemento.Size = new System.Drawing.Size(124, 28);
             this.btnEliminarElemento.TabIndex = 26;
@@ -125,11 +126,21 @@
             this.button1.Text = "🗑️";
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(208, 183);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Cantidad:";
+            // 
             // VistaCajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 321);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnEliminarElemento);
             this.Controls.Add(this.btnConfirmarCarrito);
@@ -159,5 +170,6 @@
         private System.Windows.Forms.Button btnConfirmarCarrito;
         private System.Windows.Forms.Button btnEliminarElemento;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
