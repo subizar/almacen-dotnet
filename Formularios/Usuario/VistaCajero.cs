@@ -16,5 +16,6 @@ namespace Practicas.Formularios.Usuario
         {
             InitializeComponent();
         }
+
     }
 }

@@ -35,5 +35,10 @@ namespace Practicas.Formularios
             
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            txtEmail.Text = "admin";
+            txtPassword.Text = "admin";
+        }
     }
 }

@@ -20,7 +20,7 @@ namespace Practicas
             login.ShowDialog();
             if (login.DialogResult == DialogResult.OK)
             {
-                Application.Run(new Formularios.Usuario.PanelVentas());
+                Application.Run(new Formularios.Usuario.Menu());
             }
         }
 

@@ -47,8 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Database\Conexion.cs" />
+    <Compile Include="Clases\Database\Misc.cs" />
+    <Compile Include="Clases\Database\Productos.cs" />
     <Compile Include="Clases\Database\Usuarios.cs" />
+    <Compile Include="Clases\Database\Ventas.cs" />
+    <Compile Include="Clases\Lógica\AdministracionProductos.cs" />
     <Compile Include="Clases\Lógica\AdministracionUsuarios.cs" />
+    <Compile Include="Clases\Lógica\AdministracionVentas.cs" />
     <Compile Include="Clases\Lógica\Auth.cs" />
     <Compile Include="Clases\Modelos.cs" />
     <Compile Include="Formularios\LoginForm.cs">
@@ -81,11 +86,11 @@
     <Compile Include="Formularios\Usuario\VistaCajero.Designer.cs">
       <DependentUpon>VistaCajero.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Usuario\VistaNoticias.cs">
+    <Compile Include="Formularios\Usuario\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formularios\Usuario\VistaNoticias.Designer.cs">
-      <DependentUpon>VistaNoticias.cs</DependentUpon>
+    <Compile Include="Formularios\Usuario\Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,8 +109,8 @@
     <EmbeddedResource Include="Formularios\Usuario\VistaCajero.resx">
       <DependentUpon>VistaCajero.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Usuario\VistaNoticias.resx">
-      <DependentUpon>VistaNoticias.cs</DependentUpon>
+    <EmbeddedResource Include="Formularios\Usuario\Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
