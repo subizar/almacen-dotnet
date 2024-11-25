@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 using Practicas.Clases;
-
 namespace Practicas.Clases.Database
 {
     internal class Usuarios : Conexion
@@ -30,7 +29,6 @@ namespace Practicas.Clases.Database
 
         }
 
-
         public static void CrearUsuario(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
@@ -38,5 +36,20 @@ namespace Practicas.Clases.Database
             comando.ExecuteNonQuery();
             CerrarConexion();
         }
+
+        public static List<Modelos.Usuario> LeerUsuarios(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            List<Modelos.Usuario> usuarios = new List<Modelos.Usuario>();
+            AbrirConexion();
+            OleDbDataReader reader = comando.ExecuteReader();
+            while (reader.Read())
+            {
+                usuarios.Add(new Modelos.Usuario(Convert.ToInt32(reader["usr_id"]), reader["nombre"].ToString(), reader["rol"].ToString()));
+            }
+            CerrarConexion();
+            return usuarios;
+        }
+
     }
 }

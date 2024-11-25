@@ -30,6 +30,8 @@ namespace Practicas.Formularios.Usuario
             tabProductos.Controls.Add(frmPanelProductos);
             Form frmVistaCajero = prepareTab(new VistaCajero());
             tabVistaCajero.Controls.Add(frmVistaCajero);
+            Form frmVistaUsuariosTEMP = prepareTab(new Admin.PanelUsuarios());
+            tabUsuariosADMIN.Controls.Add(frmVistaUsuariosTEMP);
         }
 
         private Form prepareTab(Form frm)

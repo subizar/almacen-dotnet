@@ -8,5 +8,9 @@ namespace Practicas.Clases.Database
 {
     internal class Productos : Conexion
     {
+        public void CrearProducto(string consulta)
+        {
+
+        }
     }
 }

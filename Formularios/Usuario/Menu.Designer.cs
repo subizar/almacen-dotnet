@@ -32,6 +32,7 @@
             this.tabVentas = new System.Windows.Forms.TabPage();
             this.tabProductos = new System.Windows.Forms.TabPage();
             this.tabVistaCajero = new System.Windows.Forms.TabPage();
+            this.tabUsuariosADMIN = new System.Windows.Forms.TabPage();
             this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,6 +41,7 @@
             this.tabControl.Controls.Add(this.tabVentas);
             this.tabControl.Controls.Add(this.tabProductos);
             this.tabControl.Controls.Add(this.tabVistaCajero);
+            this.tabControl.Controls.Add(this.tabUsuariosADMIN);
             this.tabControl.Location = new System.Drawing.Point(0, 0);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -75,6 +77,15 @@
             this.tabVistaCajero.Text = "Caja";
             this.tabVistaCajero.UseVisualStyleBackColor = true;
             // 
+            // tabUsuariosADMIN
+            // 
+            this.tabUsuariosADMIN.Location = new System.Drawing.Point(4, 22);
+            this.tabUsuariosADMIN.Name = "tabUsuariosADMIN";
+            this.tabUsuariosADMIN.Size = new System.Drawing.Size(692, 324);
+            this.tabUsuariosADMIN.TabIndex = 3;
+            this.tabUsuariosADMIN.Text = "Usuarios";
+            this.tabUsuariosADMIN.UseVisualStyleBackColor = true;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -95,5 +106,6 @@
         private System.Windows.Forms.TabPage tabVentas;
         private System.Windows.Forms.TabPage tabProductos;
         private System.Windows.Forms.TabPage tabVistaCajero;
+        private System.Windows.Forms.TabPage tabUsuariosADMIN;
     }
 }
