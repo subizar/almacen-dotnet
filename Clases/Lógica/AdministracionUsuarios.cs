@@ -15,6 +15,12 @@ namespace Practicas.Clases.Lógica
             return Database.Usuarios.LeerUsuarios(consulta);
         }
 
+        public static List<Usuario> LeerUsuarios(string filtro, string textofiltro, bool exact)
+        {
+            string consulta = $"SELECT usr_id, nombre, rol FROM Usuarios WHERE {filtro} LIKE \"{textofiltro}\"";
+            return Database.Usuarios.LeerUsuarios(consulta);
+        }
+
         public static void CrearUsuario(string name, string rol, string contraseña)
         {
             //falta validacion del input

@@ -51,5 +51,14 @@ namespace Practicas.Formularios.Admin
             //recibimos la List<Usuario>
             datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
         }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            Form frm = new ABMs.FiltrarUsuario();
+            this.Enabled = false;
+            frm.ShowDialog();
+            datagridUsuarios.DataSource = Practicas.State.filtro_usuario_response;
+            this.Enabled = true;
+        }
     }
 }
