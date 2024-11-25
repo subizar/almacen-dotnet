@@ -32,6 +32,7 @@ namespace Practicas.Formularios.Admin
 
             //POR HACER: Mover esto a un metodo aparte, generico para todos los formularios
             datagridUsuarios.AutoGenerateColumns = false;
+            datagridUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //solo poder seleccionar filas completas
             DataGridViewTextBoxColumn id_column = new DataGridViewTextBoxColumn();
             id_column.DataPropertyName = "id";
             id_column.HeaderText = "ID";
@@ -58,6 +59,21 @@ namespace Practicas.Formularios.Admin
             this.Enabled = false;
             frm.ShowDialog();
             datagridUsuarios.DataSource = Practicas.State.filtro_usuario_response;
+            this.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Practicas.State.id_editar_usuario = Convert.ToInt32(datagridUsuarios.CurrentRow.Cells[0].Value); //conseguir id de la fila seleccionada
+            Form frm = new ABMs.EditarUsuario();
+            this.Enabled = false;
+            frm.ShowDialog();
+            datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
             this.Enabled = true;
         }
     }

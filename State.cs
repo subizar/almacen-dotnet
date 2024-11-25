@@ -9,6 +9,7 @@ namespace Practicas
     public static class State
     {
         public static string user_role;
+        public static int id_editar_usuario;
         public static List<Clases.Modelos.Usuario> filtro_usuario_response;
     }
 }
