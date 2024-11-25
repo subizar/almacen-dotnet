@@ -8,11 +8,13 @@ namespace Practicas.Clases
 {
     public class Modelos
     {
+        //Las propiedades tienen que ser public para que los datagridview puedan accederlas
+        //perdón profe
         public class Usuario
         {
-            private int id { get; set; }
-            private string name { get; set; }
-            private string role { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public string role { get; set; }
 
             public Usuario(int id, string name, string role)
             {
@@ -24,18 +26,32 @@ namespace Practicas.Clases
 
         public class Producto
         {
-            private int id { get; set; }
-            private string name { get; set; }
-            private double price { get; set; }
+            public int id { get; set; }
+            public string name { get; set; }
+            public double price { get; set; }
 
+            public Producto(int id, string name, double price)
+            {
+                this.id = id;
+                this.name = name;
+                this.price = price;
+            }
         }
 
         public class Venta
         {
-            private int id { get; set; }
-            private int id_cajero { get; set; }
-            private string date { get; set; }
-            private double total { get; set; }
+            public int id { get; set; }
+            public int id_cajero { get; set; }
+            public string date { get; set; }
+            public double total { get; set; }
+
+            public Venta(int id, int id_cajero, string date, double total)
+            {
+                this.id = id;
+                this.id_cajero = id_cajero;
+                this.date = date;
+                this.total = total;
+            }
         }
     }
 }

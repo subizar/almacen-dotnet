@@ -31,6 +31,7 @@ namespace Practicas.Clases.Database
 
         public static void CrearUsuario(string consulta)
         {
+            // si sobra tiempo, devolver mensajes de error si algo sale mal.
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
             AbrirConexion();
             comando.ExecuteNonQuery();
@@ -40,11 +41,13 @@ namespace Practicas.Clases.Database
         public static List<Modelos.Usuario> LeerUsuarios(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
-            List<Modelos.Usuario> usuarios = new List<Modelos.Usuario>();
+            List<Modelos.Usuario> usuarios = new List<Modelos.Usuario>(); //nueva lista vacia
             AbrirConexion();
             OleDbDataReader reader = comando.ExecuteReader();
             while (reader.Read())
             {
+                //por cada row que lee el reader, agregamos a la lista las columnas que nos interesan
+                //dentro del parentesis de usuarios.add estamos creando una nueva instancia del modelo Usuario y pasandole los valores necesarios al constructor
                 usuarios.Add(new Modelos.Usuario(Convert.ToInt32(reader["usr_id"]), reader["nombre"].ToString(), reader["rol"].ToString()));
             }
             CerrarConexion();

@@ -22,6 +22,8 @@ namespace Practicas.Formularios.Admin
             Form frm = new ABMs.AgregarUsuario();
             this.Enabled = false;
             frm.ShowDialog();
+            //recargamos el datagridview para reflejar los cambios
+            datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
             this.Enabled = true;
         }
 
@@ -46,7 +48,7 @@ namespace Practicas.Formularios.Admin
             datagridUsuarios.Columns.Add(id_column);
             datagridUsuarios.Columns.Add(name_column);
             datagridUsuarios.Columns.Add(role_column);
-            //not working brb
+            //recibimos la List<Usuario>
             datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
         }
     }
