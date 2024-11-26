@@ -48,5 +48,13 @@ namespace Practicas.Clases.Lógica
             Database.Usuarios.EditarUsuario(consulta);
 
         }
+
+        public static void EliminarUsuario(int id)
+        {
+            if (id != 0)
+            {
+                string consulta = $"DELETE Usuarios WHERE usr_id = {id}";
+            }
+        }
     }
 }
