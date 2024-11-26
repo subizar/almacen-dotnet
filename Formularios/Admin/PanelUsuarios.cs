@@ -76,5 +76,16 @@ namespace Practicas.Formularios.Admin
             datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
             this.Enabled = true;
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Practicas.State.id_editar_usuario = Convert.ToInt32(datagridUsuarios.CurrentRow.Cells[0].Value);
+            var confirmar = MessageBox.Show("Seguro que querés eliminar este usuario?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+            if (confirmar == DialogResult.Yes && Practicas.State.id_editar_usuario != 0)
+            {
+                Clases.Lógica.AdministracionUsuarios.EliminarUsuario(Practicas.State.id_editar_usuario);
+
+            }
+        }
     }
 }

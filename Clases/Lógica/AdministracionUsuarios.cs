@@ -56,10 +56,12 @@ namespace Practicas.Clases.Lógica
 
         public static void EliminarUsuario(int id)
         {
+            string consulta = "";
             if (id != 0)
             {
-                string consulta = $"DELETE Usuarios WHERE usr_id = {id}";
+                consulta = $"DELETE Usuarios WHERE usr_id = {id}";
             }
+            Database.Usuarios.EliminarUsuario(consulta);
         }
     }
 }

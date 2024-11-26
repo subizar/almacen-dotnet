@@ -47,6 +47,14 @@ namespace Practicas.Clases.Database
             CerrarConexion();
         }
 
+        public static void EliminarUsuario(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
+
         public static List<Modelos.Usuario> LeerUsuarios(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());

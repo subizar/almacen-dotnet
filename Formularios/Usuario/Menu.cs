@@ -22,7 +22,7 @@ namespace Practicas.Formularios.Usuario
 
         }
 
-        private void VistaNoticias_Load(object sender, EventArgs e)
+        private void VistaNoticias_Load(object sender, EventArgs e) //nombre viejo de el formulario
         {
             Form frmPanelVentas = prepareTab(new PanelVentas());
             tabVentas.Controls.Add(frmPanelVentas);
@@ -30,8 +30,6 @@ namespace Practicas.Formularios.Usuario
             tabProductos.Controls.Add(frmPanelProductos);
             Form frmVistaCajero = prepareTab(new VistaCajero());
             tabVistaCajero.Controls.Add(frmVistaCajero);
-            Form frmVistaUsuariosTEMP = prepareTab(new Admin.PanelUsuarios());
-            tabUsuariosADMIN.Controls.Add(frmVistaUsuariosTEMP);
         }
 
         private Form prepareTab(Form frm)
