@@ -21,7 +21,10 @@ namespace Practicas.Formularios
             if (credenciales.Item1)
             {
                 this.DialogResult = DialogResult.OK;
-                this.role = credenciales.Item2.ToString();
+                if (credenciales.Item2.HasValue)
+                {
+                    State.user_role = Clases.Lógica.Auth.LeerRol((int)credenciales.Item2);
+                }
                 this.Close();
             }
         }
