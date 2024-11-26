@@ -8,23 +8,43 @@ namespace Practicas.Clases
 {
     public class Modelos
     {
-        //Las propiedades tienen que ser public para que los datagridview puedan accederlas
-        //perdón profe
-        public class Usuario
-        {
-            public int id { get; set; }
-            public string name { get; set; }
-            public string role { get; set; }
-            public string contraseña { get; set; }
-
-            public Usuario(int id, string name, string role, string contraseña = null)
+            public class Usuario
             {
-                this.id = id;
-                this.name = name;
-                this.role = role;
-                this.contraseña = contraseña;
+                private int Id;
+                private string Name;
+                private string Role;
+                private string Contraseña;
+                public int id
+                {
+                    get { return Id; }
+                    set { Id = value; }
+                }
+                public string name
+                {
+                    get { return Name; }
+                    set { Name = value; }
+                }
+                public string role
+                {
+                    get { return Role; }
+                    set { Role = value; }
+                }
+                public string contraseña
+                {
+                    get { return Contraseña; }
+                    set { Contraseña = value; }
+                }
+
+
+                public Usuario(int id, string name, string role, string contraseña = null)
+                {
+                    this.id = id;
+                    this.name = name;
+                    this.role = role;
+                    this.contraseña = contraseña;
+                }
             }
-        }
+        
 
         public class Producto
         {

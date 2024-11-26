@@ -31,7 +31,6 @@ namespace Practicas.Clases.Database
 
         public static void CrearUsuario(string consulta)
         {
-            // si sobra tiempo, devolver mensajes de error si algo sale mal.
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
             AbrirConexion();
             comando.ExecuteNonQuery();
