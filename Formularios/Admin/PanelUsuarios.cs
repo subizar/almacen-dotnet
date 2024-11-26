@@ -86,6 +86,7 @@ namespace Practicas.Formularios.Admin
                 Clases.Lógica.AdministracionUsuarios.EliminarUsuario(Practicas.State.id_editar_usuario);
 
             }
+            datagridUsuarios.DataSource = Clases.Lógica.AdministracionUsuarios.LeerUsuarios();
         }
     }
 }

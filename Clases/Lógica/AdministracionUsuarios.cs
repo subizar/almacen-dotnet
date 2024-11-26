@@ -59,7 +59,7 @@ namespace Practicas.Clases.Lógica
             string consulta = "";
             if (id != 0)
             {
-                consulta = $"DELETE Usuarios WHERE usr_id = {id}";
+                consulta = $"DELETE FROM Usuarios WHERE usr_id = {id}";
             }
             Database.Usuarios.EliminarUsuario(consulta);
         }
