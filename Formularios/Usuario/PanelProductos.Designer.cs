@@ -28,21 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.datagridProductos = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnFiltrar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // datagridProductos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(132, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(557, 315);
-            this.dataGridView1.TabIndex = 0;
+            this.datagridProductos.AllowUserToAddRows = false;
+            this.datagridProductos.AllowUserToDeleteRows = false;
+            this.datagridProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datagridProductos.Location = new System.Drawing.Point(132, 4);
+            this.datagridProductos.Name = "datagridProductos";
+            this.datagridProductos.ReadOnly = true;
+            this.datagridProductos.Size = new System.Drawing.Size(557, 315);
+            this.datagridProductos.TabIndex = 0;
             // 
             // btnAgregar
             // 
@@ -52,6 +55,7 @@
             this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar Producto";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnFiltrar
             // 
@@ -61,6 +65,7 @@
             this.btnFiltrar.TabIndex = 7;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = true;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
             // 
             // btnEditar
             // 
@@ -70,6 +75,7 @@
             this.btnEditar.TabIndex = 6;
             this.btnEditar.Text = "Editar Producto";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnEliminar
             // 
@@ -89,17 +95,18 @@
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.datagridProductos);
             this.Name = "PanelProductos";
             this.Text = "PanelProductos";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.PanelProductos_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.datagridProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView datagridProductos;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnFiltrar;
         private System.Windows.Forms.Button btnEditar;

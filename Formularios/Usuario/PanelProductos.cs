@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Practicas.Formularios.Admin.ABMs;
 
 namespace Practicas.Formularios.Usuario
 {
@@ -15,6 +16,55 @@ namespace Practicas.Formularios.Usuario
         public PanelProductos()
         {
             InitializeComponent();
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            Form frm = new AgregarProducto();
+            this.Enabled = false;
+            frm.ShowDialog();
+            datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
+            this.Enabled = true;
+
+        }
+
+        private void PanelProductos_Load(object sender, EventArgs e)
+        {
+            datagridProductos.AutoGenerateColumns = false;
+            datagridProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect; //solo poder seleccionar filas completas
+            DataGridViewTextBoxColumn id_column = new DataGridViewTextBoxColumn();
+            id_column.DataPropertyName = "id";
+            id_column.HeaderText = "ID";
+            id_column.CellTemplate = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn name_column = new DataGridViewTextBoxColumn();
+            name_column.DataPropertyName = "name";
+            name_column.HeaderText = "Nombre";
+            name_column.CellTemplate = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn precio_column = new DataGridViewTextBoxColumn();
+            precio_column.DataPropertyName = "price";
+            precio_column.HeaderText = "Precio";
+            precio_column.CellTemplate = new DataGridViewTextBoxCell();
+
+            datagridProductos.Columns.Add(id_column);
+            datagridProductos.Columns.Add(name_column);
+            datagridProductos.Columns.Add(precio_column);
+            //recibimos la List<Usuario>
+            datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
+        }
+
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Practicas.State.id_editar_producto = Convert.ToInt32(datagridProductos.CurrentRow.Cells[0].Value);
+            Form frm = new EditarProducto();
+            this.Enabled = false;
+            frm.ShowDialog();
+            datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
+            this.Enabled = true;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace Practicas
     {
         public static string user_role;
         public static int id_editar_usuario;
+        public static int id_editar_producto;
         public static List<Clases.Modelos.Usuario> filtro_usuario_response;
     }
 }
