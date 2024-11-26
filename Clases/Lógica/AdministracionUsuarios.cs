@@ -37,5 +37,16 @@ namespace Practicas.Clases.Lógica
             string consulta = $"INSERT INTO Usuarios (nombre, contraseña, rol) VALUES  (\"{name}\",\"{contraseña}\",\"{rol}\")";
             Clases.Database.Usuarios.CrearUsuario(consulta);
         }
+
+        public static void EditarUsuario(Usuario usuario)
+        {
+            if (usuario.contraseña == null) //si no editamos la contraseña, ponemos la actual
+            {
+                usuario.contraseña = Database.Misc.LeerValor($"SELECT contraseña FROM Usuarios WHERE usr_id={usuario.id}").ToString(); //esto me ahorra tener que pensar en como modificar la consulta dependiendo de lo que hayamos editado
+            }
+            string consulta = $"UPDATE Usuarios SET nombre=\"{usuario.name}\", rol=\"{usuario.role}\",contraseña=\"{usuario.contraseña}\" WHERE usr_id={usuario.id}";
+            Database.Usuarios.EditarUsuario(consulta);
+
+        }
     }
 }

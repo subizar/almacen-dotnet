@@ -15,12 +15,14 @@ namespace Practicas.Clases
             public int id { get; set; }
             public string name { get; set; }
             public string role { get; set; }
+            public string contraseña { get; set; }
 
-            public Usuario(int id, string name, string role)
+            public Usuario(int id, string name, string role, string contraseña = null)
             {
                 this.id = id;
                 this.name = name;
                 this.role = role;
+                this.contraseña = contraseña;
             }
         }
 

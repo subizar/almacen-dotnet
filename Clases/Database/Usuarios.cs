@@ -38,6 +38,16 @@ namespace Practicas.Clases.Database
             CerrarConexion();
         }
 
+        public static void EditarUsuario(string consulta)
+        {
+            //ahora mismo es igual que la funcion de crear usuario, pero si implementamos
+            //errores u otras funciones es bueno tenerlos por separado
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
+
         public static List<Modelos.Usuario> LeerUsuarios(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
