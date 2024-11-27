@@ -115,6 +115,7 @@
             this.btnConfirmarCarrito.TabIndex = 24;
             this.btnConfirmarCarrito.Text = "Confirmar Carrito";
             this.btnConfirmarCarrito.UseVisualStyleBackColor = true;
+            this.btnConfirmarCarrito.Click += new System.EventHandler(this.btnConfirmarCarrito_Click);
             // 
             // btnEliminarElemento
             // 

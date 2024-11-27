@@ -12,6 +12,8 @@ namespace Practicas
         public static int user_id;
         public static int id_editar_usuario;
         public static int id_editar_producto;
+        public static int id_editar_venta;
+
         public static List<Clases.Modelos.Usuario> filtro_usuario_response;
         public static List<Clases.Modelos.Producto> filtro_producto_response;
     }

@@ -111,12 +111,28 @@ namespace Practicas.Formularios.Usuario
 
         private void btnReiniciarCarrito_Click(object sender, EventArgs e)
         {
+            reiniciarcarrito();
+
+        }
+
+        private void btnConfirmarCarrito_Click(object sender, EventArgs e)
+        {
+            if (lboxCarrito.Items.Count > 0)
+            {
+                venta.fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
+                Clases.Lógica.AdministracionVentas.AgregarVenta(venta);
+                reiniciarcarrito();
+            }
+
+        }
+
+        private void reiniciarcarrito()
+        {
             productosCarrito.Clear();
             venta = new Modelos.Venta();
             ActualizarVenta();
             ActualizarListBoxCarrito();
             txtTotales.Text = "Carrito vacío";
-
         }
     }
 }

@@ -45,6 +45,7 @@
             this.datagridProductos.Location = new System.Drawing.Point(132, 4);
             this.datagridProductos.Name = "datagridProductos";
             this.datagridProductos.ReadOnly = true;
+            this.datagridProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.datagridProductos.Size = new System.Drawing.Size(557, 315);
             this.datagridProductos.TabIndex = 0;
             // 
