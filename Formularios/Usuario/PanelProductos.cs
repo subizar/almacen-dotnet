@@ -54,7 +54,11 @@ namespace Practicas.Formularios.Usuario
 
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
-
+            Form frm = new FiltrarProducto();
+            this.Enabled = false;
+            frm.ShowDialog();
+            datagridProductos.DataSource = Practicas.State.filtro_producto_response;
+            this.Enabled = true;
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -66,5 +70,23 @@ namespace Practicas.Formularios.Usuario
             datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
             this.Enabled = true;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Practicas.State.id_editar_producto = Convert.ToInt32(datagridProductos.CurrentRow.Cells[0].Value);
+            var confirmar = MessageBox.Show("Seguro que querés eliminar este producto?", "Confirmar eliminación", MessageBoxButtons.YesNo);
+            if (confirmar == DialogResult.Yes && Practicas.State.id_editar_producto != 0)
+            {
+                Clases.Lógica.AdministracionProductos.EliminarProducto(Practicas.State.id_editar_producto);
+
+            }
+            datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
+        }
     }
-}
+    }
+

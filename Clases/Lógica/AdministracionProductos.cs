@@ -13,7 +13,7 @@ namespace Practicas.Clases.Lógica
 {
     internal class AdministracionProductos
     {
-        public static void AgregarProducto(string nombre , int precio)
+        public static void AgregarProducto(string nombre, int precio)
         {
             string consulta = $"INSERT INTO Productos (nombre, precio) VALUES('{nombre}',{precio})";
             try
@@ -21,7 +21,7 @@ namespace Practicas.Clases.Lógica
                 Productos.AgregarProducto(consulta);
                 MessageBox.Show("Producto ingresado correctamente");
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -31,7 +31,7 @@ namespace Practicas.Clases.Lógica
         public static void EditarProducto(Producto producto)
         {
             string consulta = $"UPDATE Productos SET nombre=\"{producto.name}\", precio={producto.price} WHERE producto_id={producto.id}";
-            Database.Productos.AgregarProducto(consulta);
+            Database.Productos.EditarProducto(consulta);
 
         }
 
@@ -55,11 +55,22 @@ namespace Practicas.Clases.Lógica
                 case false:
                     consulta = esNumerico
                ? $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} LIKE {textofiltro}"
-               : $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} LIKE \"%{textofiltro}%\"";
+               : $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} LIKE \"{textofiltro}\"";
                     break;
             }
             return Database.Productos.LeerProductos(consulta);
         }
 
+        public static void EliminarProducto(int id)
+        {
+            string consulta = "";
+            if (id != 0)
+            {
+                consulta = $"DELETE FROM Productos WHERE producto_id = {id}";
+            }
+            Database.Productos.EliminarProducto(consulta);
+        }
     }
 }
+
+
