@@ -92,12 +92,6 @@
     <Compile Include="Formularios\Admin\ABMs\FiltrarUsuario.Designer.cs">
       <DependentUpon>FiltrarUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\Admin\ABMs\FiltrarVenta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\Admin\ABMs\FiltrarVenta.Designer.cs">
-      <DependentUpon>FiltrarVenta.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\Admin\Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Admin\ABMs\FiltrarUsuario.resx">
       <DependentUpon>FiltrarUsuario.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\Admin\ABMs\FiltrarVenta.resx">
-      <DependentUpon>FiltrarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
