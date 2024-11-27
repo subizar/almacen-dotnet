@@ -20,15 +20,20 @@ namespace Practicas.Formularios.Admin.ABMs
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtPrecio.Text == "")
+            if (txtNombre.Text == "" || txtPrecio.Text == "" || txtStock.Text == "")
             {
                 MessageBox.Show("ingrese datos validos");
             }
             else
             {
-                AdministracionProductos.AgregarProducto(txtNombre.Text, Convert.ToInt32(txtPrecio.Text));
+                AdministracionProductos.AgregarProducto(txtNombre.Text, Convert.ToInt32(txtPrecio.Text), Convert.ToInt32(txtStock.Text));
                 this.Close();
             }
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -162,6 +162,7 @@
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lboxProductos);
             this.Controls.Add(this.lboxCarrito);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "VistaCajero";
             this.Text = "VistaCajero";
             this.Load += new System.EventHandler(this.VistaCajero_Load);

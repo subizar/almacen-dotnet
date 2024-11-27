@@ -13,20 +13,48 @@ namespace Practicas.Formularios
 
         }
 
-        
+
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+
+
             (bool, int?) credenciales = Auth.VerificarCredenciales(txtEmail.Text, txtPassword.Text);
             if (credenciales.Item1)
             {
-                this.DialogResult = DialogResult.OK;
-                if (credenciales.Item2.HasValue)
+
+                State.user_id = AdministracionUsuarios.BuscarId(txtEmail.Text);
+                State.user_name = txtEmail.Text;
+                State.user_password = txtPassword.Text;
+                State.user_role = Auth.LeerRol((int)credenciales.Item2);
+                bool prueba = AdministracionUsuarios.primerIngreso(State.user_id);
+                if (prueba == true)
                 {
-                    State.user_role = Clases.Lógica.Auth.LeerRol((int)credenciales.Item2);
-                    State.user_id = (int)credenciales.Item2;
+                    Form next = new PrimerIngreso();
+                    this.Visible = false;
+                    next.ShowDialog();
+                    this.Visible = true;
+                    this.DialogResult = DialogResult.OK;
+                    if (credenciales.Item2.HasValue)
+                    {
+                        State.user_role = Clases.Lógica.Auth.LeerRol((int)credenciales.Item2);
+                        State.user_id = (int)credenciales.Item2;
+                    }
+                    this.Close();
                 }
-                this.Close();
+                else
+                {
+
+
+
+                    this.DialogResult = DialogResult.OK;
+                    if (credenciales.Item2.HasValue)
+                    {
+                        State.user_role = Clases.Lógica.Auth.LeerRol((int)credenciales.Item2);
+                        State.user_id = (int)credenciales.Item2;
+                    }
+                    this.Close();
+                }
             }
         }
 
@@ -41,8 +69,12 @@ namespace Practicas.Formularios
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            txtEmail.Text = "admin";
-            txtPassword.Text = "admin";
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

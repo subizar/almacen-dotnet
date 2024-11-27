@@ -48,13 +48,16 @@
   <ItemGroup>
     <Compile Include="Clases\Database\Conexion.cs" />
     <Compile Include="Clases\Database\Misc.cs" />
+    <Compile Include="Clases\Database\Noticias.cs" />
     <Compile Include="Clases\Database\Productos.cs" />
     <Compile Include="Clases\Database\Usuarios.cs" />
     <Compile Include="Clases\Database\Ventas.cs" />
     <Compile Include="Clases\Lógica\AdministracionProductos.cs" />
     <Compile Include="Clases\Lógica\AdministracionUsuarios.cs" />
     <Compile Include="Clases\Lógica\AdministracionVentas.cs" />
+    <Compile Include="Clases\Lógica\AdministradorNoticias.cs" />
     <Compile Include="Clases\Lógica\Auth.cs" />
+    <Compile Include="Clases\Lógica\Misc.cs" />
     <Compile Include="Clases\Modelos.cs" />
     <Compile Include="Formularios\Admin\ABMs\AgregarProducto.cs">
       <SubType>Form</SubType>
@@ -80,6 +83,12 @@
     <Compile Include="Formularios\Admin\ABMs\EditarUsuario.Designer.cs">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Admin\ABMs\EliminarNoticia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Admin\ABMs\EliminarNoticia.Designer.cs">
+      <DependentUpon>EliminarNoticia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Admin\ABMs\FiltrarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +100,18 @@
     </Compile>
     <Compile Include="Formularios\Admin\ABMs\FiltrarUsuario.Designer.cs">
       <DependentUpon>FiltrarUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Admin\ABMs\ModificarNoticia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Admin\ABMs\ModificarNoticia.Designer.cs">
+      <DependentUpon>ModificarNoticia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Admin\AgregarNoticia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Admin\AgregarNoticia.Designer.cs">
+      <DependentUpon>AgregarNoticia.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Admin\Menu.cs">
       <SubType>Form</SubType>
@@ -104,6 +125,30 @@
     <Compile Include="Formularios\Admin\PanelUsuarios.Designer.cs">
       <DependentUpon>PanelUsuarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Cerrar Sesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Cerrar Sesion.Designer.cs">
+      <DependentUpon>Cerrar Sesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\CambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\CambiarContraseña.Designer.cs">
+      <DependentUpon>CambiarContraseña.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\CambiarNombre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\CambiarNombre.Designer.cs">
+      <DependentUpon>CambiarNombre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Config\Configuracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Config\Configuracion.Designer.cs">
+      <DependentUpon>Configuracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +160,18 @@
     </Compile>
     <Compile Include="Formularios\LostPasswordForm.Designer.cs">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\PrimerIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\PrimerIngreso.Designer.cs">
+      <DependentUpon>PrimerIngreso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Usuario\VistaNoticias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Usuario\VistaNoticias.Designer.cs">
+      <DependentUpon>VistaNoticias.cs</DependentUpon>
     </Compile>
     <Compile Include="State.cs" />
     <Compile Include="Formularios\Usuario\PanelProductos.cs">
@@ -155,11 +212,20 @@
     <EmbeddedResource Include="Formularios\Admin\ABMs\EditarUsuario.resx">
       <DependentUpon>EditarUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Admin\ABMs\EliminarNoticia.resx">
+      <DependentUpon>EliminarNoticia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Admin\ABMs\FiltrarProducto.resx">
       <DependentUpon>FiltrarProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Admin\ABMs\FiltrarUsuario.resx">
       <DependentUpon>FiltrarUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Admin\ABMs\ModificarNoticia.resx">
+      <DependentUpon>ModificarNoticia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Admin\AgregarNoticia.resx">
+      <DependentUpon>AgregarNoticia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Admin\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -167,11 +233,26 @@
     <EmbeddedResource Include="Formularios\Admin\PanelUsuarios.resx">
       <DependentUpon>PanelUsuarios.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cerrar Sesion.resx">
+      <DependentUpon>Cerrar Sesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\CambiarContraseña.resx">
+      <DependentUpon>CambiarContraseña.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\CambiarNombre.resx">
+      <DependentUpon>CambiarNombre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Config\Configuracion.resx">
+      <DependentUpon>Configuracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\LostPasswordForm.resx">
       <DependentUpon>LostPasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\PrimerIngreso.resx">
+      <DependentUpon>PrimerIngreso.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuario\PanelProductos.resx">
       <DependentUpon>PanelProductos.cs</DependentUpon>
@@ -184,6 +265,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Usuario\Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Usuario\VistaNoticias.resx">
+      <DependentUpon>VistaNoticias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

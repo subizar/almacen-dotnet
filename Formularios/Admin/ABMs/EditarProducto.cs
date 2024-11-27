@@ -28,6 +28,7 @@ namespace Practicas.Formularios.Admin.ABMs
 
             txtNombre.Text = producto_base.name;
             txtPrecio.Text = producto_base.price.ToString();
+            txtStock.Text = producto_base.stock.ToString();
         }
 
 
@@ -49,7 +50,7 @@ namespace Practicas.Formularios.Admin.ABMs
                 producto_edit.name = txtNombre.Text;
             }
 
-            //CONTRASEÑA
+            //PRECIO
             txtPrecio.Enabled = cboxPrecio.Checked;
             if (txtPrecio.Enabled == false)
             {
@@ -60,6 +61,14 @@ namespace Practicas.Formularios.Admin.ABMs
                 producto_edit.price = Convert.ToDouble(txtPrecio.Text);
             }
             
+            txtStock.Enabled = cmbStock.Enabled;
+            if (txtStock.Enabled == false)
+            {
+                producto_edit.stock = producto_base.stock;
+            } else
+            {
+                producto_edit.stock = Convert.ToInt32(txtStock.Text);
+            }
            
         }
 
@@ -85,5 +94,7 @@ namespace Practicas.Formularios.Admin.ABMs
         {
 
         }
+
+        private void cmbStock_CheckedChanged(object sender, EventArgs e) { Revalidar(); }
     }
 }

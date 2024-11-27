@@ -10,6 +10,9 @@ namespace Practicas.Clases.Lógica
     {
         public static void AgregarVenta(Modelos.Venta venta)
         {
+            
+
+
             string consulta = $"INSERT INTO Ventas (usr_id, fecha, precio_total) VALUES ({venta.id_cajero},\"{venta.fecha}\",{venta.total})";
             Database.Ventas.AgregarVenta(consulta);
         }

@@ -109,6 +109,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.datagridUsuarios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "PanelUsuarios";
             this.Text = "PanelUsuarios";
             this.Load += new System.EventHandler(this.PanelUsuarios_Load);

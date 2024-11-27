@@ -29,7 +29,7 @@ namespace Practicas.Formularios.Admin.ABMs
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            Clases.Lógica.AdministracionUsuarios.CrearUsuario(txtNombre.Text, cmbRol.Text, txtContraseña.Text);
+            Clases.Lógica.AdministracionUsuarios.CrearUsuario(txtNombre.Text, cmbRol.Text, txtContraseña.Text,txtEmail.Text);
             this.Close();
         }
     }

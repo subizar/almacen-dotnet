@@ -167,6 +167,7 @@
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditarUsuario";
             this.Text = "EditarUsuario";
             this.Load += new System.EventHandler(this.EditarUsuario_Load);

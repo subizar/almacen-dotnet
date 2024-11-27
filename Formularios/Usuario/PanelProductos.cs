@@ -39,16 +39,21 @@ namespace Practicas.Formularios.Usuario
             DataGridViewTextBoxColumn name_column = new DataGridViewTextBoxColumn();
             name_column.DataPropertyName = "name";
             name_column.HeaderText = "Nombre";
-            name_column.Width = 300;
+            name_column.Width = 200;
             name_column.CellTemplate = new DataGridViewTextBoxCell();
             DataGridViewTextBoxColumn precio_column = new DataGridViewTextBoxColumn();
             precio_column.DataPropertyName = "price";
             precio_column.HeaderText = "Precio";
             precio_column.CellTemplate = new DataGridViewTextBoxCell();
+            DataGridViewTextBoxColumn stock_column = new DataGridViewTextBoxColumn();
+            stock_column.DataPropertyName = "stock";
+            stock_column.HeaderText = "Stock";
+            stock_column.CellTemplate = new DataGridViewTextBoxCell();
 
             datagridProductos.Columns.Add(id_column);
             datagridProductos.Columns.Add(name_column);
             datagridProductos.Columns.Add(precio_column);
+            datagridProductos.Columns.Add(stock_column);
             //recibimos la List<Usuario>
             datagridProductos.DataSource = Clases.Lógica.AdministracionProductos.LeerProductos();
         }

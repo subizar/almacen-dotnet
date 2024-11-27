@@ -89,6 +89,7 @@
             this.btnAgregar.TabIndex = 4;
             this.btnAgregar.Text = "Agregar venta";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnReiniciarFiltro
             // 
@@ -122,6 +123,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.datagridVentas);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PanelVentas";
             this.Text = "PanelVentas";
             this.Load += new System.EventHandler(this.PanelVentas_Load);

@@ -48,7 +48,6 @@
             // 
             // button1
             // 
-            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(12, 51);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 23);
@@ -69,7 +68,6 @@
             // 
             // textBox1
             // 
-            this.textBox1.Enabled = false;
             this.textBox1.Location = new System.Drawing.Point(12, 25);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(194, 20);
@@ -77,7 +75,6 @@
             // 
             // textBox2
             // 
-            this.textBox2.Enabled = false;
             this.textBox2.Location = new System.Drawing.Point(12, 108);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(194, 20);
@@ -94,13 +91,13 @@
             // 
             // button3
             // 
-            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(12, 134);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(197, 23);
             this.button3.TabIndex = 6;
             this.button3.Text = "Iniciar sesión";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // LostPasswordForm
             // 
@@ -114,6 +111,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "LostPasswordForm";
             this.Text = "LostPasswordForm";
             this.ResumeLayout(false);

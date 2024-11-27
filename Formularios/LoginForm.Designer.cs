@@ -34,6 +34,7 @@
             this.lblUsername = new System.Windows.Forms.Label();
             this.lblContraseña = new System.Windows.Forms.Label();
             this.linkForgotPassword = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLogin
@@ -89,11 +90,22 @@
             this.linkForgotPassword.Text = "Olvidé mi contraseña";
             this.linkForgotPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkForgotPassword_LinkClicked);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 142);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(129, 23);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Salir";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(159, 147);
+            this.ClientSize = new System.Drawing.Size(159, 168);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.linkForgotPassword);
             this.Controls.Add(this.lblContraseña);
             this.Controls.Add(this.lblUsername);
@@ -116,5 +128,6 @@
         private System.Windows.Forms.Label lblUsername;
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.LinkLabel linkForgotPassword;
+        private System.Windows.Forms.Button button1;
     }
 }

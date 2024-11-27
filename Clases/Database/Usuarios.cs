@@ -46,7 +46,54 @@ namespace Practicas.Clases.Database
             comando.ExecuteNonQuery();
             CerrarConexion();
         }
+        public static void CambiarNombre(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
 
+        public static void CambiarContraseña(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
+        public static void GuardarContraseñaVieja(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            comando.ExecuteNonQuery();
+            CerrarConexion();
+        }
+        public static int BuscarId(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            int id = Convert.ToInt32(comando.ExecuteScalar());
+            CerrarConexion();
+            return id;
+        }
+        public static string BuscarMail(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            string mail = Convert.ToString(comando.ExecuteScalar());
+            CerrarConexion();
+            return mail;
+        }
+
+        
+        public static string BuscarContraseña(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            string contraseña = Convert.ToString(comando.ExecuteScalar());
+            CerrarConexion();
+            return contraseña;
+        }
         public static void EliminarUsuario(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());

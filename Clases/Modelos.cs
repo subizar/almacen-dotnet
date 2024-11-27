@@ -51,6 +51,7 @@ namespace Practicas.Clases
             private int Id;
             private string Name;
             private double Precio;
+            private int Stock;
 
             public int id
             {
@@ -67,13 +68,20 @@ namespace Practicas.Clases
                 get { return Precio; }
                 set { Precio = value; }
             }
+            public int stock
+            {
+                get { return Stock; }
+                set { Stock = value; }
+            }
 
 
-            public Producto(int id, string name, double price)
+            public Producto(int id, string name, double price, int stock)
             {
                 this.id = id;
                 this.name = name;
-                this.price = price;
+                this.price = price;                
+                this.stock = stock;
+
             }
         }
 

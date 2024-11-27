@@ -108,6 +108,7 @@
             this.Controls.Add(this.btnFiltrar);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cmbPropiedadFiltro);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FiltrarUsuario";
             this.Text = "FiltrarUsuario";
             this.Load += new System.EventHandler(this.FiltrarUsuario_Load);

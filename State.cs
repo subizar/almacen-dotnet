@@ -10,6 +10,9 @@ namespace Practicas
     {
         public static string user_role;
         public static int user_id;
+        public static string user_name;
+        public static string user_password;
+
         public static int id_editar_usuario;
         public static int id_editar_producto;
         public static int id_editar_venta;

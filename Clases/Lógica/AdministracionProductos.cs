@@ -13,9 +13,9 @@ namespace Practicas.Clases.Lógica
 {
     internal class AdministracionProductos
     {
-        public static void AgregarProducto(string nombre, int precio)
+        public static void AgregarProducto(string nombre, int precio,int stock)
         {
-            string consulta = $"INSERT INTO Productos (nombre, precio) VALUES('{nombre}',{precio})";
+            string consulta = $"INSERT INTO Productos (nombre, precio, stock) VALUES('{nombre}',{precio},{stock})";
             try
             {
                 Productos.AgregarProducto(consulta);
@@ -30,14 +30,14 @@ namespace Practicas.Clases.Lógica
 
         public static void EditarProducto(Producto producto)
         {
-            string consulta = $"UPDATE Productos SET nombre=\"{producto.name}\", precio={producto.price} WHERE producto_id={producto.id}";
+            string consulta = $"UPDATE Productos SET nombre=\"{producto.name}\", precio={producto.price}, stock={producto.stock} WHERE producto_id={producto.id}";
             Database.Productos.EditarProducto(consulta);
 
         }
 
         public static List<Producto> LeerProductos()
         {
-            string consulta = $"SELECT producto_id, nombre, precio FROM Productos";
+            string consulta = $"SELECT producto_id, nombre, precio , stock FROM Productos";
             return Database.Productos.LeerProductos(consulta);
         }
         public static List<Producto> LeerProductos(string filtro, string textofiltro, bool exact)
@@ -49,21 +49,23 @@ namespace Practicas.Clases.Lógica
             {
                 case true:
                     consulta = esNumerico
-                        ? $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} = {textofiltro}"
-                : $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} = \"{textofiltro}\"";
+                        ? $"SELECT producto_id, nombre, precio ,stock FROM Productos WHERE {filtro} = {textofiltro}"
+                : $"SELECT producto_id, nombre, precio ,stock FROM Productos WHERE {filtro} = \"{textofiltro}\"";
                     break;
                 case false:
                     consulta = esNumerico
-               ? $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} LIKE {textofiltro}"
-               : $"SELECT producto_id, nombre, precio FROM Productos WHERE {filtro} LIKE \"{textofiltro}\"";
+               ? $"SELECT producto_id, nombre, precio ,stock FROM Productos WHERE {filtro} LIKE {textofiltro}"
+               : $"SELECT producto_id, nombre, precio ,stock FROM Productos WHERE {filtro} LIKE \"{textofiltro}\"";
                     break;
             }
             return Database.Productos.LeerProductos(consulta);
         }
 
-        public static void BuscarProducto(string texto)
+        public static int BuscarStock(string id)
         {
-
+            string consulta = $"SELECT stock FROM Productos WHERE producto_id = {id} ";
+            int stock = BuscarStock(consulta);
+            return stock;
         }
 
         public static void EliminarProducto(int id)

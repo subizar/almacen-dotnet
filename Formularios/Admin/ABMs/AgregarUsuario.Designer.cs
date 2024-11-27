@@ -36,11 +36,13 @@
             this.btnVolver = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtContraseña = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(53, 53);
+            this.txtNombre.Location = new System.Drawing.Point(53, 23);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(133, 20);
             this.txtNombre.TabIndex = 0;
@@ -52,7 +54,7 @@
             this.cmbRol.Items.AddRange(new object[] {
             "Usuario",
             "Admin"});
-            this.cmbRol.Location = new System.Drawing.Point(53, 135);
+            this.cmbRol.Location = new System.Drawing.Point(53, 146);
             this.cmbRol.Name = "cmbRol";
             this.cmbRol.Size = new System.Drawing.Size(133, 21);
             this.cmbRol.TabIndex = 1;
@@ -60,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 37);
+            this.label1.Location = new System.Drawing.Point(50, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 2;
@@ -69,7 +71,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 119);
+            this.label2.Location = new System.Drawing.Point(50, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 3;
@@ -77,7 +79,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(53, 162);
+            this.btnAgregar.Location = new System.Drawing.Point(53, 173);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(133, 32);
             this.btnAgregar.TabIndex = 4;
@@ -87,7 +89,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(97, 200);
+            this.btnVolver.Location = new System.Drawing.Point(97, 211);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(54, 23);
             this.btnVolver.TabIndex = 5;
@@ -98,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 81);
+            this.label3.Location = new System.Drawing.Point(50, 51);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 7;
@@ -106,16 +108,34 @@
             // 
             // txtContraseña
             // 
-            this.txtContraseña.Location = new System.Drawing.Point(53, 97);
+            this.txtContraseña.Location = new System.Drawing.Point(53, 67);
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.Size = new System.Drawing.Size(133, 20);
             this.txtContraseña.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(50, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Mail";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(53, 107);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(133, 20);
+            this.txtEmail.TabIndex = 8;
             // 
             // AgregarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(245, 246);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.btnVolver);
@@ -124,6 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbRol);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AgregarUsuario";
             this.Text = "AgregarUsuario";
             this.Load += new System.EventHandler(this.AgregarUsuario_Load);
@@ -142,5 +163,7 @@
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtContraseña;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtEmail;
     }
 }

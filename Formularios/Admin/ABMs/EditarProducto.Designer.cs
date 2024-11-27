@@ -36,11 +36,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
+            this.cmbStock = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtStock = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(143, 105);
+            this.btnVolver.Location = new System.Drawing.Point(143, 134);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(69, 22);
             this.btnVolver.TabIndex = 21;
@@ -72,7 +75,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(16, 91);
+            this.btnEditar.Location = new System.Drawing.Point(16, 127);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(121, 36);
             this.btnEditar.TabIndex = 17;
@@ -114,11 +117,42 @@
             this.txtNombre.Size = new System.Drawing.Size(121, 20);
             this.txtNombre.TabIndex = 11;
             // 
+            // cmbStock
+            // 
+            this.cmbStock.AutoSize = true;
+            this.cmbStock.Location = new System.Drawing.Point(143, 104);
+            this.cmbStock.Name = "cmbStock";
+            this.cmbStock.Size = new System.Drawing.Size(64, 17);
+            this.cmbStock.TabIndex = 24;
+            this.cmbStock.Text = "Editable";
+            this.cmbStock.UseVisualStyleBackColor = true;
+            this.cmbStock.CheckedChanged += new System.EventHandler(this.cmbStock_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(13, 85);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Stock";
+            // 
+            // txtStock
+            // 
+            this.txtStock.Enabled = false;
+            this.txtStock.Location = new System.Drawing.Point(16, 101);
+            this.txtStock.Name = "txtStock";
+            this.txtStock.Size = new System.Drawing.Size(121, 20);
+            this.txtStock.TabIndex = 22;
+            // 
             // EditarProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(221, 137);
+            this.ClientSize = new System.Drawing.Size(221, 175);
+            this.Controls.Add(this.cmbStock);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtStock);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.cboxPrecio);
             this.Controls.Add(this.cboxNombre);
@@ -127,6 +161,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.txtNombre);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "EditarProducto";
             this.Text = "EditarProducto";
             this.Load += new System.EventHandler(this.EditarProducto_Load);
@@ -145,5 +180,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPrecio;
         private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.CheckBox cmbStock;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtStock;
     }
 }

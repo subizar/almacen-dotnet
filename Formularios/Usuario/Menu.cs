@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Practicas.Formularios.Config;
 
 namespace Practicas.Formularios.Usuario
 {
@@ -30,6 +31,8 @@ namespace Practicas.Formularios.Usuario
             tabProductos.Controls.Add(frmPanelProductos);
             Form frmVistaCajero = prepareTab(new VistaCajero());
             tabVistaCajero.Controls.Add(frmVistaCajero);
+            Form frmVistaNoticias = prepareTab(new VistaNoticias());
+            tabNoticias.Controls.Add(frmVistaNoticias);
         }
 
         private Form prepareTab(Form frm)
@@ -38,6 +41,30 @@ namespace Practicas.Formularios.Usuario
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Visible = true;
             return frm;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form next = new Configuracion();
+            this.Visible = false;
+            next.ShowDialog();
+            this.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form next = new CerrarSesion();
+            this.Visible = false;
+            next.ShowDialog();
+            try
+            {
+                this.Visible = true;
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

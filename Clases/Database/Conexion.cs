@@ -11,7 +11,16 @@ namespace Practicas.Clases.Database
     {
         private static string cadena = "Provider=Microsoft.ACE.OLEDB.12.0; Data source=|DataDirectory|db2.accdb";
         private static OleDbConnection conexion = new OleDbConnection(cadena);
-        public static void AbrirConexion() { conexion.Open(); }
+        public static void AbrirConexion() { try
+            {
+                conexion.Open();
+            }
+            catch (Exception ex)
+            {
+                conexion.Close();
+                conexion.Open();
+            }
+            }
 
         public static void CerrarConexion() { conexion.Close(); }
 

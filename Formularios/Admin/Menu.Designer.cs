@@ -29,35 +29,37 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabUsuarios = new System.Windows.Forms.TabPage();
+            this.tabCaja = new System.Windows.Forms.TabPage();
             this.tabVentas = new System.Windows.Forms.TabPage();
             this.tabProductos = new System.Windows.Forms.TabPage();
             this.tabNoticias = new System.Windows.Forms.TabPage();
-            this.tabCaja = new System.Windows.Forms.TabPage();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tabUsuarios = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabUsuarios);
             this.tabControl1.Controls.Add(this.tabCaja);
             this.tabControl1.Controls.Add(this.tabVentas);
             this.tabControl1.Controls.Add(this.tabProductos);
             this.tabControl1.Controls.Add(this.tabNoticias);
+            this.tabControl1.Controls.Add(this.tabUsuarios);
             this.tabControl1.Location = new System.Drawing.Point(2, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(700, 348);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabUsuarios
+            // tabCaja
             // 
-            this.tabUsuarios.Location = new System.Drawing.Point(4, 22);
-            this.tabUsuarios.Name = "tabUsuarios";
-            this.tabUsuarios.Size = new System.Drawing.Size(692, 322);
-            this.tabUsuarios.TabIndex = 2;
-            this.tabUsuarios.Text = "Usuarios";
-            this.tabUsuarios.UseVisualStyleBackColor = true;
+            this.tabCaja.Location = new System.Drawing.Point(4, 22);
+            this.tabCaja.Name = "tabCaja";
+            this.tabCaja.Size = new System.Drawing.Size(692, 322);
+            this.tabCaja.TabIndex = 6;
+            this.tabCaja.Text = "Caja";
+            this.tabCaja.UseVisualStyleBackColor = true;
             // 
             // tabVentas
             // 
@@ -82,25 +84,48 @@
             this.tabNoticias.Location = new System.Drawing.Point(4, 22);
             this.tabNoticias.Name = "tabNoticias";
             this.tabNoticias.Size = new System.Drawing.Size(692, 322);
-            this.tabNoticias.TabIndex = 5;
+            this.tabNoticias.TabIndex = 7;
             this.tabNoticias.Text = "Noticias";
             this.tabNoticias.UseVisualStyleBackColor = true;
             // 
-            // tabCaja
+            // button2
             // 
-            this.tabCaja.Location = new System.Drawing.Point(4, 22);
-            this.tabCaja.Name = "tabCaja";
-            this.tabCaja.Size = new System.Drawing.Size(692, 322);
-            this.tabCaja.TabIndex = 6;
-            this.tabCaja.Text = "Caja";
-            this.tabCaja.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(704, 57);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Cerrar Sesion";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(704, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(99, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Configuracion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // tabUsuarios
+            // 
+            this.tabUsuarios.Location = new System.Drawing.Point(4, 22);
+            this.tabUsuarios.Name = "tabUsuarios";
+            this.tabUsuarios.Size = new System.Drawing.Size(692, 322);
+            this.tabUsuarios.TabIndex = 8;
+            this.tabUsuarios.Text = "Usuarios";
+            this.tabUsuarios.UseVisualStyleBackColor = true;
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 366);
+            this.ClientSize = new System.Drawing.Size(808, 366);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Menu";
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
@@ -112,10 +137,12 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabUsuarios;
         private System.Windows.Forms.TabPage tabVentas;
         private System.Windows.Forms.TabPage tabProductos;
-        private System.Windows.Forms.TabPage tabNoticias;
         private System.Windows.Forms.TabPage tabCaja;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabNoticias;
+        private System.Windows.Forms.TabPage tabUsuarios;
     }
 }

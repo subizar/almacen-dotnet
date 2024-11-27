@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Practicas.Clases.Database;
+using System.Windows.Forms;
 using static Practicas.Clases.Modelos;
 
 namespace Practicas.Clases.Lógica
@@ -36,10 +38,10 @@ namespace Practicas.Clases.Lógica
             return Database.Usuarios.LeerUsuarios(consulta);
         }
 
-        public static void CrearUsuario(string name, string rol, string contraseña)
+        public static void CrearUsuario(string name, string rol, string contraseña,string mail)
         {
             //falta validacion del input
-            string consulta = $"INSERT INTO Usuarios (nombre, contraseña, rol) VALUES  (\"{name}\",\"{contraseña}\",\"{rol}\")";
+            string consulta = $"INSERT INTO Usuarios (nombre, contraseña, rol, mail) VALUES  (\"{name}\",\"{contraseña}\",\"{rol}\",\"{mail}\")";
             Clases.Database.Usuarios.CrearUsuario(consulta);
         }
 
@@ -53,6 +55,87 @@ namespace Practicas.Clases.Lógica
             Database.Usuarios.EditarUsuario(consulta);
 
         }
+        public static void CambiarNombre(string nombre, string contraseña)
+        {
+            if (contraseña == State.user_password)
+            {
+
+
+                string nombreAnterior = State.user_name;
+                string consulta = $"UPDATE Usuarios SET nombre = '{nombre}' WHERE nombre ='{nombreAnterior}' ";
+                Usuarios.CambiarNombre(consulta);
+                MessageBox.Show("Nombre de usuario actualizado con exito");
+            }
+            else
+            {
+                MessageBox.Show("Contraseña incorrecta");
+            }
+
+        }
+        public static void GuardarContraseñaVieja(string ContraseñaVieja,int id)
+        {
+            string consulta = $"INSERT INTO ContraseñasViejas (usr_id , contraseñaVieja) VALUES ({id},'{ContraseñaVieja}')";
+            Usuarios.GuardarContraseñaVieja(consulta);
+            
+        }
+        public static void CambiarContraseñaMail(string contraseñaNueva, string nombre)
+        {
+            string consulta = $"UPDATE Usuarios SET contraseña = '{contraseñaNueva}' WHERE nombre ='{nombre}' ";
+            Usuarios.CambiarContraseña(consulta);
+            GuardarContraseñaVieja(BuscarContraseña(nombre), BuscarId(nombre));
+        }
+        public static void CambiarContraseña(string contraseñaNueva, string ContraseñaActual)
+        {
+            if (ContraseñaActual == State.user_password)
+            {
+                string nombre = State.user_name;
+                string consulta = $"UPDATE Usuarios SET contraseña = '{contraseñaNueva}' WHERE nombre ='{nombre}' ";
+                Usuarios.CambiarContraseña(consulta);
+                GuardarContraseñaVieja(ContraseñaActual, BuscarId(nombre));
+                MessageBox.Show("Contraseña actualizada con exito");
+            }
+            else
+            {
+                MessageBox.Show("Contraseña incorrecta");
+            };
+        }
+
+        public static int BuscarId(string nombre)
+        {
+            string consulta = $"SELECT usr_id FROM Usuarios WHERE nombre = '{nombre}'";
+            int id = Usuarios.BuscarId(consulta);
+            return id;
+        }
+        public static string BuscarMail(string nombre)
+        {
+            string consulta = $"SELECT mail FROM Usuarios WHERE nombre = '{nombre}'";
+            string mail = Usuarios.BuscarMail(consulta);
+            return mail;
+        }
+        public static string BuscarContraseña(string nombre)
+        {
+            string consulta = $"SELECT contraseña FROM Usuarios WHERE nombre = '{nombre}'";
+            string contraseña = Usuarios.BuscarContraseña(consulta);
+            return contraseña;
+        }
+
+
+        public static bool primerIngreso(int id)
+        {
+            string consulta = $"SELECT contraseñaVieja_id FROM ContraseñasViejas WHERE usr_id = {id} ";
+            int usr_id = Usuarios.BuscarId(consulta);
+            if (usr_id == 0)
+            {
+                return true;
+            }
+            else 
+            {
+                return false;
+            }
+                
+        }
+
+
 
         public static void EliminarUsuario(int id)
         {

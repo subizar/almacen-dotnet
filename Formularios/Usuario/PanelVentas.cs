@@ -64,5 +64,10 @@ namespace Practicas.Formularios.Usuario
             datagridVentas.DataSource = Clases.Lógica.AdministracionVentas.LeerVentas();
 
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

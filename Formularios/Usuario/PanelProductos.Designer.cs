@@ -110,6 +110,7 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.datagridProductos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "PanelProductos";
             this.Text = "PanelProductos";
             this.Load += new System.EventHandler(this.PanelProductos_Load);

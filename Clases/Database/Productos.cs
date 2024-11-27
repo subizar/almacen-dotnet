@@ -33,6 +33,14 @@ namespace Practicas.Clases.Database
             CerrarConexion();
         }
 
+        public static int BuscarStock(string consulta)
+        {
+            OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+            AbrirConexion();
+            int stock = Convert.ToInt32(comando.ExecuteScalar());
+            CerrarConexion();
+            return stock;
+        }
         public static List<Modelos.Producto> LeerProductos(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
@@ -43,7 +51,7 @@ namespace Practicas.Clases.Database
             {
                 //por cada row que lee el reader, agregamos a la lista las columnas que nos interesan
                 //dentro del parentesis de usuarios.add estamos creando una nueva instancia del modelo Usuario y pasandole los valores necesarios al constructor
-                productos.Add(new Modelos.Producto(Convert.ToInt32(reader["producto_id"]), reader["nombre"].ToString(), Convert.ToInt32(reader["precio"])));
+                productos.Add(new Modelos.Producto(Convert.ToInt32(reader["producto_id"]), reader["nombre"].ToString(), Convert.ToInt32(reader["precio"]), Convert.ToInt32(reader["stock"])));
             }
             CerrarConexion();
             return productos;
