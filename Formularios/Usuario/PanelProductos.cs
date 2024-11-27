@@ -39,6 +39,7 @@ namespace Practicas.Formularios.Usuario
             DataGridViewTextBoxColumn name_column = new DataGridViewTextBoxColumn();
             name_column.DataPropertyName = "name";
             name_column.HeaderText = "Nombre";
+            name_column.Width = 300;
             name_column.CellTemplate = new DataGridViewTextBoxCell();
             DataGridViewTextBoxColumn precio_column = new DataGridViewTextBoxColumn();
             precio_column.DataPropertyName = "price";

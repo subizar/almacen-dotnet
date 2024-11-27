@@ -61,6 +61,11 @@ namespace Practicas.Clases.Lógica
             return Database.Productos.LeerProductos(consulta);
         }
 
+        public static void BuscarProducto(string texto)
+        {
+
+        }
+
         public static void EliminarProducto(int id)
         {
             string consulta = "";

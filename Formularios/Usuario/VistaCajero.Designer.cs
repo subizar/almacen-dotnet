@@ -30,14 +30,14 @@
         {
             this.lboxCarrito = new System.Windows.Forms.ListBox();
             this.lboxProductos = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnAñadirProducto = new System.Windows.Forms.Button();
             this.nmrCantidad = new System.Windows.Forms.NumericUpDown();
             this.txtTotales = new System.Windows.Forms.RichTextBox();
             this.btnReiniciarCarrito = new System.Windows.Forms.Button();
             this.btnConfirmarCarrito = new System.Windows.Forms.Button();
             this.btnEliminarElemento = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReiniciar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nmrCantidad)).BeginInit();
             this.SuspendLayout();
@@ -58,13 +58,13 @@
             this.lboxProductos.Size = new System.Drawing.Size(193, 264);
             this.lboxProductos.TabIndex = 18;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 289);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(163, 20);
-            this.textBox1.TabIndex = 19;
-            this.textBox1.Text = "Buscar...";
+            this.txtBuscar.Location = new System.Drawing.Point(12, 289);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(163, 20);
+            this.txtBuscar.TabIndex = 19;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // btnAñadirProducto
             // 
@@ -74,6 +74,7 @@
             this.btnAñadirProducto.TabIndex = 20;
             this.btnAñadirProducto.Text = "Añadir";
             this.btnAñadirProducto.UseVisualStyleBackColor = true;
+            this.btnAñadirProducto.Click += new System.EventHandler(this.btnAñadirProducto_Click);
             // 
             // nmrCantidad
             // 
@@ -81,6 +82,12 @@
             this.nmrCantidad.Name = "nmrCantidad";
             this.nmrCantidad.Size = new System.Drawing.Size(127, 20);
             this.nmrCantidad.TabIndex = 21;
+            this.nmrCantidad.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nmrCantidad.ValueChanged += new System.EventHandler(this.nmrCantidad_ValueChanged);
             // 
             // txtTotales
             // 
@@ -98,6 +105,7 @@
             this.btnReiniciarCarrito.TabIndex = 23;
             this.btnReiniciarCarrito.Text = "Reiniciar Carrito";
             this.btnReiniciarCarrito.UseVisualStyleBackColor = true;
+            this.btnReiniciarCarrito.Click += new System.EventHandler(this.btnReiniciarCarrito_Click);
             // 
             // btnConfirmarCarrito
             // 
@@ -114,17 +122,19 @@
             this.btnEliminarElemento.Name = "btnEliminarElemento";
             this.btnEliminarElemento.Size = new System.Drawing.Size(124, 28);
             this.btnEliminarElemento.TabIndex = 26;
-            this.btnEliminarElemento.Text = "Eliminar seleccionados";
+            this.btnEliminarElemento.Text = "Eliminar seleccionado";
             this.btnEliminarElemento.UseVisualStyleBackColor = true;
+            this.btnEliminarElemento.Click += new System.EventHandler(this.btnEliminarElemento_Click);
             // 
-            // button1
+            // btnReiniciar
             // 
-            this.button1.Location = new System.Drawing.Point(181, 286);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 23);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "🗑️";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Location = new System.Drawing.Point(181, 286);
+            this.btnReiniciar.Name = "btnReiniciar";
+            this.btnReiniciar.Size = new System.Drawing.Size(24, 23);
+            this.btnReiniciar.TabIndex = 27;
+            this.btnReiniciar.Text = "🗑️";
+            this.btnReiniciar.UseVisualStyleBackColor = true;
+            this.btnReiniciar.Click += new System.EventHandler(this.btnReiniciar_Click);
             // 
             // label1
             // 
@@ -141,18 +151,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(691, 321);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnReiniciar);
             this.Controls.Add(this.btnEliminarElemento);
             this.Controls.Add(this.btnConfirmarCarrito);
             this.Controls.Add(this.btnReiniciarCarrito);
             this.Controls.Add(this.txtTotales);
             this.Controls.Add(this.nmrCantidad);
             this.Controls.Add(this.btnAñadirProducto);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lboxProductos);
             this.Controls.Add(this.lboxCarrito);
             this.Name = "VistaCajero";
             this.Text = "VistaCajero";
+            this.Load += new System.EventHandler(this.VistaCajero_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nmrCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -162,14 +173,14 @@
         #endregion
         private System.Windows.Forms.ListBox lboxCarrito;
         private System.Windows.Forms.ListBox lboxProductos;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscar;
         private System.Windows.Forms.Button btnAñadirProducto;
         private System.Windows.Forms.NumericUpDown nmrCantidad;
         private System.Windows.Forms.RichTextBox txtTotales;
         private System.Windows.Forms.Button btnReiniciarCarrito;
         private System.Windows.Forms.Button btnConfirmarCarrito;
         private System.Windows.Forms.Button btnEliminarElemento;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReiniciar;
         private System.Windows.Forms.Label label1;
     }
 }

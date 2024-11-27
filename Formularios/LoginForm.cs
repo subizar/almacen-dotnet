@@ -24,6 +24,7 @@ namespace Practicas.Formularios
                 if (credenciales.Item2.HasValue)
                 {
                     State.user_role = Clases.Lógica.Auth.LeerRol((int)credenciales.Item2);
+                    State.user_id = (int)credenciales.Item2;
                 }
                 this.Close();
             }
