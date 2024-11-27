@@ -8,5 +8,9 @@ namespace Practicas.Clases.Lógica
 {
     internal class AdministracionVentas
     {
+        static void AgregarVenta()
+        {
+
+        }
     }
 }
