@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Practicas.Clases;
+using Practicas.Clases.Lógica;
 using static Practicas.Clases.Modelos;
 
 namespace Practicas.Formularios.Admin.ABMs
@@ -47,7 +48,15 @@ namespace Practicas.Formularios.Admin.ABMs
             }
             else
             {
-                producto_edit.name = txtNombre.Text;
+                if (InputValidator.ValidateProductName(txtNombre.Text, out string nameError))
+                {
+                    producto_edit.name = txtNombre.Text;
+                }
+                else
+                {
+                    InputValidator.ShowValidationError(nameError);
+                    return;
+                }
             }
 
             //PRECIO
@@ -58,7 +67,15 @@ namespace Practicas.Formularios.Admin.ABMs
             }
             else
             {
-                producto_edit.price = Convert.ToDouble(txtPrecio.Text);
+                if (InputValidator.ValidatePrice(txtPrecio.Text, out int precio, out string priceError))
+                {
+                    producto_edit.price = precio;
+                }
+                else
+                {
+                    InputValidator.ShowValidationError(priceError);
+                    return;
+                }
             }
             
             txtStock.Enabled = cmbStock.Enabled;
@@ -67,18 +84,33 @@ namespace Practicas.Formularios.Admin.ABMs
                 producto_edit.stock = producto_base.stock;
             } else
             {
-                producto_edit.stock = Convert.ToInt32(txtStock.Text);
+                if (InputValidator.ValidateStock(txtStock.Text, out int stock, out string stockError))
+                {
+                    producto_edit.stock = stock;
+                }
+                else
+                {
+                    InputValidator.ShowValidationError(stockError);
+                    return;
+                }
             }
-           
         }
 
         
 
         private void btnEditar_Click_1(object sender, EventArgs e)
         {
-            Revalidar();
-            Clases.Lógica.AdministracionProductos.EditarProducto(producto_edit);
-            this.Close();
+            try
+            {
+                Revalidar();
+                Clases.Lógica.AdministracionProductos.EditarProducto(producto_edit);
+                InputValidator.ShowSuccessMessage("Producto actualizado exitosamente");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al editar producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnVolver_Click_1(object sender, EventArgs e)

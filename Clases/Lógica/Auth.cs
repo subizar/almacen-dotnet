@@ -15,16 +15,35 @@ namespace Practicas.Clases.Lógica
         // para ninguna acción, y un usuario puede simplemente modificar la memoria y acceder al programa sin restricciones)
         public static (bool, int?) VerificarCredenciales(string usuario, string contraseña)
         {
-            // vulnerable a inyección sql
-            string consulta = $"SELECT usr_id FROM Usuarios WHERE nombre = \"{usuario}\" AND contraseña = \"{contraseña}\"";
-            (bool, int?) response = Database.Usuarios.RevisarLogin(consulta);
+            // Validar entrada antes de procesar
+            if (!InputValidator.ValidateUsername(usuario, out string userError))
+            {
+                InputValidator.ShowValidationError(userError);
+                return (false, null);
+            }
+
+            if (!InputValidator.ValidatePassword(contraseña, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return (false, null);
+            }
+
+            // Usar consulta parametrizada para evitar inyección SQL
+            (bool, int?) response = Database.Usuarios.RevisarLoginSeguro(usuario, contraseña);
             return response;
         }
 
         public static string LeerRol(int id)
         {
-            string consulta = $"SELECT rol FROM Usuarios WHERE usr_id = {id}";
-            return Database.Misc.LeerValor(consulta);
+            // Validar que el ID sea válido
+            if (id <= 0)
+            {
+                InputValidator.ShowValidationError("ID de usuario inválido");
+                return string.Empty;
+            }
+
+            // Usar consulta parametrizada para evitar inyección SQL
+            return Database.Usuarios.LeerRolSeguro(id);
         }
     }
 }

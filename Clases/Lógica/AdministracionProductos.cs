@@ -13,9 +13,28 @@ namespace Practicas.Clases.Lógica
 {
     internal class AdministracionProductos
     {
-        public static void AgregarProducto(string nombre, int precio,int stock)
+        public static void AgregarProducto(string nombre, int precio, int stock)
         {
-            string consulta = $"INSERT INTO Productos (nombre, precio, stock) VALUES('{nombre}',{precio},{stock})";
+            // Validar entrada
+            if (!InputValidator.ValidateProductName(nombre, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
+
+            if (precio < InputValidator.MIN_PRICE || precio > InputValidator.MAX_PRICE)
+            {
+                InputValidator.ShowValidationError($"El precio debe estar entre {InputValidator.MIN_PRICE} y {InputValidator.MAX_PRICE}");
+                return;
+            }
+
+            if (stock < InputValidator.MIN_STOCK || stock > InputValidator.MAX_STOCK)
+            {
+                InputValidator.ShowValidationError($"El stock debe estar entre {InputValidator.MIN_STOCK} y {InputValidator.MAX_STOCK}");
+                return;
+            }
+
+            string consulta = $"INSERT INTO Productos (nombre, precio, stock) VALUES('{InputValidator.SanitizeInput(nombre)}',{precio},{stock})";
             try
             {
                 Productos.AgregarProducto(consulta);
@@ -23,16 +42,48 @@ namespace Practicas.Clases.Lógica
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Error al agregar producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
 
         public static void EditarProducto(Producto producto)
         {
-            string consulta = $"UPDATE Productos SET nombre=\"{producto.name}\", precio={producto.price}, stock={producto.stock} WHERE producto_id={producto.id}";
-            Database.Productos.EditarProducto(consulta);
+            // Validar entrada
+            if (!InputValidator.ValidateProductName(producto.name, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
 
+            if (producto.price < InputValidator.MIN_PRICE || producto.price > InputValidator.MAX_PRICE)
+            {
+                InputValidator.ShowValidationError($"El precio debe estar entre {InputValidator.MIN_PRICE} y {InputValidator.MAX_PRICE}");
+                return;
+            }
+
+            if (producto.stock < InputValidator.MIN_STOCK || producto.stock > InputValidator.MAX_STOCK)
+            {
+                InputValidator.ShowValidationError($"El stock debe estar entre {InputValidator.MIN_STOCK} y {InputValidator.MAX_STOCK}");
+                return;
+            }
+
+            if (producto.id <= 0)
+            {
+                InputValidator.ShowValidationError("ID de producto inválido");
+                return;
+            }
+
+            string consulta = $"UPDATE Productos SET nombre=\"{InputValidator.SanitizeInput(producto.name)}\", precio={producto.price}, stock={producto.stock} WHERE producto_id={producto.id}";
+            
+            try
+            {
+                Database.Productos.EditarProducto(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al editar producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static List<Producto> LeerProductos()
@@ -70,12 +121,22 @@ namespace Practicas.Clases.Lógica
 
         public static void EliminarProducto(int id)
         {
-            string consulta = "";
-            if (id != 0)
+            if (id <= 0)
             {
-                consulta = $"DELETE FROM Productos WHERE producto_id = {id}";
+                InputValidator.ShowValidationError("ID de producto inválido");
+                return;
             }
-            Database.Productos.EliminarProducto(consulta);
+
+            string consulta = $"DELETE FROM Productos WHERE producto_id = {id}";
+            
+            try
+            {
+                Database.Productos.EliminarProducto(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

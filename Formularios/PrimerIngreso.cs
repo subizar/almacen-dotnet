@@ -25,8 +25,23 @@ namespace Practicas.Formularios
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AdministracionUsuarios.CambiarContraseñaMail(textBox1.Text, State.user_name);
-            this.Close();
+            // Validar nueva contraseña
+            if (!InputValidator.ValidatePassword(textBox1.Text, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return;
+            }
+
+            try
+            {
+                AdministracionUsuarios.CambiarContraseñaMail(textBox1.Text, State.user_name);
+                InputValidator.ShowSuccessMessage("Contraseña actualizada exitosamente");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al actualizar contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

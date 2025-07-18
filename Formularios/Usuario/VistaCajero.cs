@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Practicas.Clases;
+using Practicas.Clases.Lógica;
 
 namespace Practicas.Formularios.Usuario
 {
@@ -48,13 +49,41 @@ namespace Practicas.Formularios.Usuario
 
         private void AgregarProductoAlCarrito(int index)
         {
-            lboxCarrito.Items.Clear();
-            productosCarrito.Add(new Modelos.ProductoEnCarrito(productosBusqueda[index], Convert.ToInt32(nmrCantidad.Value)));
-            foreach (Modelos.ProductoEnCarrito producto in productosCarrito)
+            // Validar que se haya seleccionado un producto válido
+            if (index < 0 || index >= productosBusqueda.Count)
             {
-                lboxCarrito.Items.Add($"{producto.name} - ${producto.price} x {producto.quantity}");
+                InputValidator.ShowValidationError("Seleccione un producto válido de la lista");
+                return;
             }
-            ActualizarVenta();
+
+            // Validar que la cantidad sea válida
+            if (nmrCantidad.Value <= 0)
+            {
+                InputValidator.ShowValidationError("La cantidad debe ser mayor a 0");
+                return;
+            }
+
+            // Validar que hay suficiente stock
+            if (nmrCantidad.Value > productosBusqueda[index].stock)
+            {
+                InputValidator.ShowValidationError($"Stock insuficiente. Stock disponible: {productosBusqueda[index].stock}");
+                return;
+            }
+
+            try
+            {
+                lboxCarrito.Items.Clear();
+                productosCarrito.Add(new Modelos.ProductoEnCarrito(productosBusqueda[index], Convert.ToInt32(nmrCantidad.Value)));
+                foreach (Modelos.ProductoEnCarrito producto in productosCarrito)
+                {
+                    lboxCarrito.Items.Add($"{producto.name} - ${producto.price} x {producto.quantity}");
+                }
+                ActualizarVenta();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar producto al carrito: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ActualizarListBoxCarrito()
@@ -82,12 +111,22 @@ namespace Practicas.Formularios.Usuario
 
         private void BorrarDelCarrito(int index)
         {
-            if (index >= 0)
+            if (index < 0 || index >= productosCarrito.Count)
+            {
+                InputValidator.ShowValidationError("Seleccione un elemento válido del carrito para eliminar");
+                return;
+            }
+
+            try
             {
                 productosCarrito.RemoveAt(index);
+                ActualizarVenta();
+                ActualizarListBoxCarrito();
             }
-            ActualizarVenta();
-            ActualizarListBoxCarrito();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar producto del carrito: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
@@ -117,13 +156,30 @@ namespace Practicas.Formularios.Usuario
 
         private void btnConfirmarCarrito_Click(object sender, EventArgs e)
         {
-            if (lboxCarrito.Items.Count > 0)
+            if (lboxCarrito.Items.Count <= 0)
+            {
+                InputValidator.ShowValidationError("El carrito está vacío. Agregue productos antes de confirmar la venta");
+                return;
+            }
+
+            // Validar que el usuario tenga permisos
+            if (State.user_id <= 0)
+            {
+                InputValidator.ShowValidationError("Error de sesión. Inicie sesión nuevamente");
+                return;
+            }
+
+            try
             {
                 venta.fecha = DateTime.Now.ToString("yyyy-MM-dd HH:mm");
                 Clases.Lógica.AdministracionVentas.AgregarVenta(venta);
+                InputValidator.ShowSuccessMessage("Venta registrada exitosamente");
                 reiniciarcarrito();
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al confirmar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void reiniciarcarrito()

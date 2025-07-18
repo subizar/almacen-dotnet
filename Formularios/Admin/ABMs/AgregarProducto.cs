@@ -20,14 +20,36 @@ namespace Practicas.Formularios.Admin.ABMs
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (txtNombre.Text == "" || txtPrecio.Text == "" || txtStock.Text == "")
+            // Validar nombre del producto
+            if (!InputValidator.ValidateProductName(txtNombre.Text, out string nameError))
             {
-                MessageBox.Show("ingrese datos validos");
+                InputValidator.ShowValidationError(nameError);
+                return;
             }
-            else
+
+            // Validar precio
+            if (!InputValidator.ValidatePrice(txtPrecio.Text, out int precio, out string priceError))
             {
-                AdministracionProductos.AgregarProducto(txtNombre.Text, Convert.ToInt32(txtPrecio.Text), Convert.ToInt32(txtStock.Text));
+                InputValidator.ShowValidationError(priceError);
+                return;
+            }
+
+            // Validar stock
+            if (!InputValidator.ValidateStock(txtStock.Text, out int stock, out string stockError))
+            {
+                InputValidator.ShowValidationError(stockError);
+                return;
+            }
+
+            // Si todas las validaciones pasan, agregar el producto
+            try
+            {
+                AdministracionProductos.AgregarProducto(txtNombre.Text, precio, stock);
                 this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar producto: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

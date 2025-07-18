@@ -14,41 +14,69 @@ namespace Practicas
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Form login = new Formularios.LoginForm();
-            login.ShowDialog();
-            if (login.DialogResult == DialogResult.OK)
+            try
             {
-                if (State.user_role != null)
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                
+                // Configurar manejo global de excepciones
+                Application.ThreadException += Application_ThreadException;
+                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+                
+                Form login = new Formularios.LoginForm();
+                login.ShowDialog();
+                if (login.DialogResult == DialogResult.OK)
                 {
-                    switch (State.user_role)
+                    if (State.user_role != null)
                     {
-                        case "Admin": Application.Run(new Formularios.Admin.Menu()); break;
-                        case "Usuario": Application.Run(new Formularios.Usuario.Menu()); break;
-                        default: Application.Run(new Formularios.Usuario.Menu()); break;
+                        switch (State.user_role)
+                        {
+                            case "Admin": Application.Run(new Formularios.Admin.Menu()); break;
+                            case "Usuario": Application.Run(new Formularios.Usuario.Menu()); break;
+                            default: Application.Run(new Formularios.Usuario.Menu()); break;
+                        }
                     }
                 }
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error crítico en la aplicación: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show($"Error en la aplicación: {e.Exception.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show($"Error crítico: {((Exception)e.ExceptionObject).Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static void logout()
         {
-            Application.Restart();
-            Form login = new Formularios.LoginForm();
-            login.ShowDialog();
-            if (login.DialogResult == DialogResult.OK)
+            try
             {
-                if (State.user_role != null)
+                Application.Restart();
+                Form login = new Formularios.LoginForm();
+                login.ShowDialog();
+                if (login.DialogResult == DialogResult.OK)
                 {
-                    switch (State.user_role)
+                    if (State.user_role != null)
                     {
-                        case "Admin": Application.Run(new Formularios.Admin.Menu()); break;
-                        case "Usuario": Application.Run(new Formularios.Usuario.Menu()); break;
-                        default: Application.Run(new Formularios.Usuario.Menu()); break;
+                        switch (State.user_role)
+                        {
+                            case "Admin": Application.Run(new Formularios.Admin.Menu()); break;
+                            case "Usuario": Application.Run(new Formularios.Usuario.Menu()); break;
+                            default: Application.Run(new Formularios.Usuario.Menu()); break;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cerrar sesión: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         

@@ -25,9 +25,36 @@ namespace Practicas.Formularios.Config
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AdministracionUsuarios.CambiarContraseña(textBox1.Text, textBox2.Text);
-            MessageBox.Show("Contraseña actualizada con exito");
+            // Validar contraseña nueva
+            if (!InputValidator.ValidatePassword(textBox1.Text, out string newPassError))
+            {
+                InputValidator.ShowValidationError($"Nueva contraseña: {newPassError}");
+                return;
+            }
 
+            // Validar contraseña actual
+            if (!InputValidator.ValidatePassword(textBox2.Text, out string currentPassError))
+            {
+                InputValidator.ShowValidationError($"Contraseña actual: {currentPassError}");
+                return;
+            }
+
+            // Validar que las contraseñas sean diferentes
+            if (textBox1.Text == textBox2.Text)
+            {
+                InputValidator.ShowValidationError("La nueva contraseña debe ser diferente a la actual");
+                return;
+            }
+
+            try
+            {
+                AdministracionUsuarios.CambiarContraseña(textBox1.Text, textBox2.Text);
+                // El método ya muestra su propio mensaje de éxito o error
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cambiar contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)
