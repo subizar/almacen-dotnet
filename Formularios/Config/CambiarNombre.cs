@@ -20,7 +20,29 @@ namespace Practicas.Formularios.Config
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AdministracionUsuarios.CambiarNombre(textBox1.Text, textBox2.Text);
+            // Validar nuevo nombre
+            if (!InputValidator.ValidateUsername(textBox1.Text, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
+
+            // Validar contraseña
+            if (!InputValidator.ValidatePassword(textBox2.Text, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return;
+            }
+
+            try
+            {
+                AdministracionUsuarios.CambiarNombre(textBox1.Text, textBox2.Text);
+                // El método ya muestra su propio mensaje de éxito o error
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cambiar nombre: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button2_Click_1(object sender, EventArgs e)

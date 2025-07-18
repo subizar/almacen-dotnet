@@ -57,6 +57,7 @@
     <Compile Include="Clases\Lógica\AdministracionVentas.cs" />
     <Compile Include="Clases\Lógica\AdministradorNoticias.cs" />
     <Compile Include="Clases\Lógica\Auth.cs" />
+    <Compile Include="Clases\Lógica\InputValidator.cs" />
     <Compile Include="Clases\Lógica\Misc.cs" />
     <Compile Include="Clases\Modelos.cs" />
     <Compile Include="Formularios\Admin\ABMs\AgregarProducto.cs">

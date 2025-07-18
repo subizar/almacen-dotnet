@@ -38,11 +38,44 @@ namespace Practicas.Clases.Lógica
             return Database.Usuarios.LeerUsuarios(consulta);
         }
 
-        public static void CrearUsuario(string name, string rol, string contraseña,string mail)
+        public static void CrearUsuario(string name, string rol, string contraseña, string mail)
         {
-            //falta validacion del input
-            string consulta = $"INSERT INTO Usuarios (nombre, contraseña, rol, mail) VALUES  (\"{name}\",\"{contraseña}\",\"{rol}\",\"{mail}\")";
-            Clases.Database.Usuarios.CrearUsuario(consulta);
+            // Validar entrada
+            if (!InputValidator.ValidateUsername(name, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
+
+            if (!InputValidator.ValidatePassword(contraseña, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return;
+            }
+
+            if (!InputValidator.ValidateEmail(mail, out string emailError))
+            {
+                InputValidator.ShowValidationError(emailError);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(rol))
+            {
+                InputValidator.ShowValidationError("El rol es requerido");
+                return;
+            }
+
+            // Sanitizar entrada y crear consulta segura
+            string consulta = $"INSERT INTO Usuarios (nombre, contraseña, rol, mail) VALUES  (\"{InputValidator.SanitizeInput(name)}\",\"{InputValidator.SanitizeInput(contraseña)}\",\"{InputValidator.SanitizeInput(rol)}\",\"{InputValidator.SanitizeInput(mail)}\")";
+            
+            try
+            {
+                Clases.Database.Usuarios.CrearUsuario(consulta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al crear usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void EditarUsuario(Usuario usuario)
@@ -57,20 +90,38 @@ namespace Practicas.Clases.Lógica
         }
         public static void CambiarNombre(string nombre, string contraseña)
         {
+            // Validar entrada
+            if (!InputValidator.ValidateUsername(nombre, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
+
+            if (!InputValidator.ValidatePassword(contraseña, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return;
+            }
+
             if (contraseña == State.user_password)
             {
-
-
                 string nombreAnterior = State.user_name;
-                string consulta = $"UPDATE Usuarios SET nombre = '{nombre}' WHERE nombre ='{nombreAnterior}' ";
-                Usuarios.CambiarNombre(consulta);
-                MessageBox.Show("Nombre de usuario actualizado con exito");
+                string consulta = $"UPDATE Usuarios SET nombre = '{InputValidator.SanitizeInput(nombre)}' WHERE nombre ='{InputValidator.SanitizeInput(nombreAnterior)}' ";
+                
+                try
+                {
+                    Usuarios.CambiarNombre(consulta);
+                    MessageBox.Show("Nombre de usuario actualizado con éxito");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cambiar nombre: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
                 MessageBox.Show("Contraseña incorrecta");
             }
-
         }
         public static void GuardarContraseñaVieja(string ContraseñaVieja,int id)
         {
@@ -80,24 +131,65 @@ namespace Practicas.Clases.Lógica
         }
         public static void CambiarContraseñaMail(string contraseñaNueva, string nombre)
         {
-            string consulta = $"UPDATE Usuarios SET contraseña = '{contraseñaNueva}' WHERE nombre ='{nombre}' ";
-            Usuarios.CambiarContraseña(consulta);
-            GuardarContraseñaVieja(BuscarContraseña(nombre), BuscarId(nombre));
+            // Validar entrada
+            if (!InputValidator.ValidatePassword(contraseñaNueva, out string passError))
+            {
+                InputValidator.ShowValidationError(passError);
+                return;
+            }
+
+            if (!InputValidator.ValidateUsername(nombre, out string nameError))
+            {
+                InputValidator.ShowValidationError(nameError);
+                return;
+            }
+
+            try
+            {
+                string consulta = $"UPDATE Usuarios SET contraseña = '{InputValidator.SanitizeInput(contraseñaNueva)}' WHERE nombre ='{InputValidator.SanitizeInput(nombre)}' ";
+                Usuarios.CambiarContraseña(consulta);
+                GuardarContraseñaVieja(BuscarContraseña(nombre), BuscarId(nombre));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cambiar contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public static void CambiarContraseña(string contraseñaNueva, string ContraseñaActual)
         {
+            // Validar entrada
+            if (!InputValidator.ValidatePassword(contraseñaNueva, out string newPassError))
+            {
+                InputValidator.ShowValidationError($"Nueva contraseña: {newPassError}");
+                return;
+            }
+
+            if (!InputValidator.ValidatePassword(ContraseñaActual, out string currentPassError))
+            {
+                InputValidator.ShowValidationError($"Contraseña actual: {currentPassError}");
+                return;
+            }
+
             if (ContraseñaActual == State.user_password)
             {
                 string nombre = State.user_name;
-                string consulta = $"UPDATE Usuarios SET contraseña = '{contraseñaNueva}' WHERE nombre ='{nombre}' ";
-                Usuarios.CambiarContraseña(consulta);
-                GuardarContraseñaVieja(ContraseñaActual, BuscarId(nombre));
-                MessageBox.Show("Contraseña actualizada con exito");
+                string consulta = $"UPDATE Usuarios SET contraseña = '{InputValidator.SanitizeInput(contraseñaNueva)}' WHERE nombre ='{InputValidator.SanitizeInput(nombre)}' ";
+                
+                try
+                {
+                    Usuarios.CambiarContraseña(consulta);
+                    GuardarContraseñaVieja(ContraseñaActual, BuscarId(nombre));
+                    MessageBox.Show("Contraseña actualizada con éxito");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al cambiar contraseña: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             else
             {
                 MessageBox.Show("Contraseña incorrecta");
-            };
+            }
         }
 
         public static int BuscarId(string nombre)

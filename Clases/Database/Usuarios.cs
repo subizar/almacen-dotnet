@@ -29,6 +29,65 @@ namespace Practicas.Clases.Database
 
         }
 
+        /// <summary>
+        /// Versión segura de revisión de login usando consultas parametrizadas
+        /// </summary>
+        public static (bool, int?) RevisarLoginSeguro(string usuario, string contraseña)
+        {
+            try
+            {
+                string consulta = "SELECT usr_id FROM Usuarios WHERE nombre = ? AND contraseña = ?";
+                OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+                comando.Parameters.AddWithValue("@nombre", usuario);
+                comando.Parameters.AddWithValue("@contraseña", contraseña);
+                
+                AbrirConexion();
+                object result = comando.ExecuteScalar();
+                CerrarConexion();
+                
+                if (result != null && result != DBNull.Value)
+                {
+                    int userId = Convert.ToInt32(result);
+                    return (true, userId);
+                }
+                else
+                {
+                    return (false, null);
+                }
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                MessageBox.Show($"Error al verificar credenciales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (false, null);
+            }
+        }
+
+        /// <summary>
+        /// Versión segura de lectura de rol usando consultas parametrizadas
+        /// </summary>
+        public static string LeerRolSeguro(int userId)
+        {
+            try
+            {
+                string consulta = "SELECT rol FROM Usuarios WHERE usr_id = ?";
+                OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
+                comando.Parameters.AddWithValue("@usr_id", userId);
+                
+                AbrirConexion();
+                object result = comando.ExecuteScalar();
+                CerrarConexion();
+                
+                return result?.ToString() ?? string.Empty;
+            }
+            catch (Exception ex)
+            {
+                CerrarConexion();
+                MessageBox.Show($"Error al leer rol: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return string.Empty;
+            }
+        }
+
         public static void CrearUsuario(string consulta)
         {
             OleDbCommand comando = new OleDbCommand(consulta, GetConexion());
